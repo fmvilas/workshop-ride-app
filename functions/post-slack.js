@@ -1,9 +1,9 @@
-import dotenv from 'dotenv';
-import axios from 'axios';
+const dotenv = require('dotenv');
+const axios = require('axios');
 
 dotenv.config();
 
-export async function handler(event, context, callback) {
+async function handler(event, context, callback) {
   const SLACK_TOKEN = process.env.SLACK_TOKEN;
   const SLACK_POST_MESSAGE_ENDPOINT = 'https://slack.com/api/chat.postMessage';
   const payload = JSON.parse(event.body);
@@ -25,5 +25,7 @@ export async function handler(event, context, callback) {
     }).catch((error) => {
       console.log(error);
       callback(error);
-    })
+    });
 }
+
+module.exports.handler = handler;
