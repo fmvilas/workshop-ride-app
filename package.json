@@ -5,6 +5,8 @@
     "build-functions": "netlify-lambda build lambda"
   },
   "dependencies": {
+    "axios": "^0.19.0",
+    "dotenv": "^8.1.0",
     "netlify-lambda": "^1.6.3"
   }
 }
