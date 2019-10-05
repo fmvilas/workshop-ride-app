@@ -2,10 +2,9 @@
   "name": "workshop",
   "version": "1.0.0",
   "scripts": {
-    "build-functions": "netlify deploy --prod"
+    "build-functions": "zip-it-and-ship-it functions functions-dist"
   },
   "dependencies": {
-    "netlify-cli": "^2.15.0",
     "node-rdkafka": "^2.7.1-2"
   }
 }
