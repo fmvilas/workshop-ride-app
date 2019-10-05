@@ -1,9 +1,6 @@
 {
   "name": "workshop",
   "version": "1.0.0",
-  "scripts": {
-    "build-functions": "zip-it-and-ship-it functions functions-dist"
-  },
   "dependencies": {
     "node-rdkafka": "^2.7.1-2"
   }
