@@ -4,31 +4,31 @@ info:
   version: '1.0.0'
 
 channels:
-  trip/requested:
+  ride/requested:
     publish:
-      summary: Trip requested
-      description: The user requested a trip.
+      summary: Ride requested
+      description: The user requested a ride.
       message:
-        $ref: '#/components/messages/tripRequested'
-  trip/changed:
+        $ref: '#/components/messages/rideRequested'
+  ride/changed:
     subscribe:
-      summary: Trip status changed
+      summary: Ride status changed
       message:
-        $ref: '#/components/messages/tripStatus'
+        $ref: '#/components/messages/rideStatus'
  
 components:
   messages:
-    tripRequested:
+    rideRequested:
       payload:
         type: object
         properties:
           userId:
             $ref: '#/components/schemas/userId'
-          trip:
-            $ref: '#/components/schemas/trip'
+          ride:
+            $ref: '#/components/schemas/ride'
           sentAt:
             $ref: '#/components/schemas/sentAt'
-    tripStatus:
+    rideStatus:
       payload:
         type: object
         properties:
@@ -36,8 +36,8 @@ components:
             $ref: '#/components/schemas/userId'
           driverId:
             $ref: '#/components/schemas/driverId'
-          trip:
-            $ref: '#/components/schemas/trip'
+          ride:
+            $ref: '#/components/schemas/ride'
           sentAt:
             $ref: '#/components/schemas/sentAt'
   schemas:
@@ -51,25 +51,25 @@ components:
     driverId:
       type: integer
       description: Id of the driver.
-    trip:
+    ride:
       type: object
       properties:
         id:
           type: integer
-          description: Id of the trip.
+          description: Id of the ride.
         from:
-          $ref: '#/components/schemas/tripLocation'
-          description: Position where the trip starts from.
+          $ref: '#/components/schemas/rideLocation'
+          description: Position where the ride starts from.
         to:
-          $ref: '#/components/schemas/tripLocation'
-          description: Position where the trip finishes.
+          $ref: '#/components/schemas/rideLocation'
+          description: Position where the ride finishes.
         price:
           type: number
           minimum: 0
-          description: Price of the trip in Euros.
+          description: Price of the ride in Euros.
         status:
           type: string
-          description: Status of the trip.
+          description: Status of the ride.
           enum:
             - requested
             - accepted
@@ -77,7 +77,7 @@ components:
             - started
             - finished
             - paid
-    tripLocation:
+    rideLocation:
       type: object
       properties:
         latitude:
