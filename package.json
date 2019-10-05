@@ -1,0 +1,10 @@
+{
+  "name": "workshop",
+  "version": "1.0.0",
+  "scripts": {
+    "build-functions": "netlify-lambda build lambda"
+  },
+  "dependencies": {
+    "netlify-lambda": "^1.6.3"
+  }
+}
