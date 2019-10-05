@@ -1,6 +1,9 @@
 {
   "name": "functions",
   "version": "1.0.0",
+  "scripts": {
+    "build": "zip-it-and-ship-it . ./dist"
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "dotenv": "^8.1.0"
