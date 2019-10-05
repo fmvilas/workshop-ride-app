@@ -1,0 +1,103 @@
+asyncapi: '2.0.0'
+info:
+  title: User API
+  version: '1.0.0'
+
+servers:
+  kafka:
+    url: tcp://localhost:9092
+    protocol: kafka
+
+channels:
+  trip/requested:
+    subscribe:
+      operationId: tripRequested
+      summary: Trip requested
+      description: The user requested a trip.
+      message:
+        $ref: '#/components/messages/tripRequested'
+  trip/changed:
+    publish:
+      operationId: tripChanged
+      summary: Trip status changed
+      message:
+        $ref: '#/components/messages/tripStatus'
+ 
+components:
+  messages:
+    tripRequested:
+      payload:
+        type: object
+        properties:
+          userId:
+            $ref: '#/components/schemas/userId'
+          trip:
+            $ref: '#/components/schemas/trip'
+          sentAt:
+            $ref: '#/components/schemas/sentAt'
+    tripStatus:
+      payload:
+        type: object
+        properties:
+          userId:
+            $ref: '#/components/schemas/userId'
+          driverId:
+            $ref: '#/components/schemas/driverId'
+          trip:
+            $ref: '#/components/schemas/trip'
+          sentAt:
+            $ref: '#/components/schemas/sentAt'
+  schemas:
+    sentAt:
+      type: string
+      format: date-time
+      description: Date and time when the message was sent.
+    userId:
+      type: integer
+      description: Id of the user.
+    driverId:
+      type: integer
+      description: Id of the driver.
+    trip:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the trip.
+        from:
+          $ref: '#/components/schemas/tripLocation'
+          description: Position where the trip starts from.
+        to:
+          $ref: '#/components/schemas/tripLocation'
+          description: Position where the trip finishes.
+        price:
+          type: number
+          minimum: 0
+          description: Price of the trip in Euros.
+        status:
+          type: string
+          description: Status of the trip.
+          enum:
+            - requested
+            - accepted
+            - picked-up
+            - started
+            - finished
+            - paid
+    tripLocation:
+      type: object
+      properties:
+        latitude:
+          type: number
+          minimum: -90
+          maximum: 90
+          description: Latitude of the starting point.
+        longitude:
+          type: number
+          minimum: -180
+          maximum: 180
+          description: Longitude of the starting point.
+        friendlyName:
+          type: string
+          description: Human-friendly name of the location.
+          
