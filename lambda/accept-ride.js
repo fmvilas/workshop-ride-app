@@ -38,12 +38,18 @@ async function handler(event, context, callback) {
     });
     callback(null, {
       statusCode: 200,
-      body: 'OK'
+      body: {
+        replace_original: true,
+        text: `Awesome! You'll get a message soon to let you know if you have been selected.`,
+      }
     });
   } catch (e) {
-    callback(e, {
-      statusCode: 500,
-      body: 'Unexpected Error'
+    callback(200, {
+      statusCode: 200,
+      body: {
+        replace_original: true,
+        text: 'Oops, looks like there was an error and we could not accept it.',
+      }
     });
   }
 }
