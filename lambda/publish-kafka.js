@@ -4,6 +4,7 @@ const { Kafka } = require('kafkajs');
 dotenv.config();
 
 async function handler(event, context, callback) {
+  console.log(event);
   const client = new Kafka({
     brokers: [process.env.KAFKA_HOST],
     clientId: 'ABC',
