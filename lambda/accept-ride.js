@@ -31,7 +31,7 @@ async function handler(event, context, callback) {
       messages: [{
         value: JSON.stringify({
           rideId,
-          driverId: event.body.payload.user.id,
+          driverId: event.body.payload.user.name,
         })
       }],
     });
