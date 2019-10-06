@@ -8,8 +8,7 @@ async function handler(event, context, callback) {
   try {
     event.body = qs.parse(event.body);
     event.body.payload = JSON.parse(event.body.payload);
-    console.error(JSON.stringify(event.body, 2));
-
+    
     const client = new Kafka({
       brokers: [process.env.KAFKA_HOST],
       clientId: 'publisher-kafka-lambda',
@@ -44,7 +43,8 @@ async function handler(event, context, callback) {
       }
     });
   } catch (e) {
-    callback(200, {
+    console.error(e);
+    callback(null, {
       statusCode: 200,
       body: {
         replace_original: true,
