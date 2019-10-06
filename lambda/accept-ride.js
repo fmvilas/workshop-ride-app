@@ -5,25 +5,27 @@ const qs = require('qs');
 dotenv.config();
 
 async function handler(event, context, callback) {
-  event.body = qs.parse(event.body);
-  console.log(require('util').inspect(event, { depth: null }));
-  console.error(require('util').inspect(event, {depth: null}));
-  const client = new Kafka({
-    brokers: [process.env.KAFKA_HOST],
-    clientId: 'publisher-kafka-lambda',
-    ssl: {
-      rejectUnauthorized: true
-    },
-    sasl: {
-      mechanism: 'plain',
-      username: process.env.KAFKA_USERNAME,
-      password: process.env.KAFKA_PASSWORD,
-    },
-  });
-  const producer = client.producer();
-
   try {
-    const callbackId = event.body.callback_id.split('_');
+    event.body = qs.parse(event.body);
+    event.body.payload = JSON.parse(event.body.payload);
+    console.log(require('util').inspect(event, { depth: null }));
+    console.error(require('util').inspect(event, {depth: null}));
+    
+    const client = new Kafka({
+      brokers: [process.env.KAFKA_HOST],
+      clientId: 'publisher-kafka-lambda',
+      ssl: {
+        rejectUnauthorized: true
+      },
+      sasl: {
+        mechanism: 'plain',
+        username: process.env.KAFKA_USERNAME,
+        password: process.env.KAFKA_PASSWORD,
+      },
+    });
+
+    const producer = client.producer();  
+    const callbackId = event.body.payload.callback_id.split('_');
     const rideId = Number(callbackId[callbackId.length - 1]);
     await producer.connect();
     await producer.send({
@@ -31,7 +33,7 @@ async function handler(event, context, callback) {
       messages: [{
         value: JSON.stringify({
           rideId,
-          driverId: event.body.user.id,
+          driverId: event.body.payload.user.id,
         })
       }],
     });
