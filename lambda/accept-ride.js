@@ -4,6 +4,8 @@ const { Kafka } = require('kafkajs');
 dotenv.config();
 
 async function handler(event, context, callback) {
+  console.log(require('util').inspect(event, { depth: null }));
+  console.error(require('util').inspect(event, {depth: null}));
   const client = new Kafka({
     brokers: [process.env.KAFKA_HOST],
     clientId: 'publisher-kafka-lambda',
