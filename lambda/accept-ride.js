@@ -4,10 +4,9 @@ const { Kafka } = require('kafkajs');
 dotenv.config();
 
 async function handler(event, context, callback) {
-  console.log(event);
   const client = new Kafka({
     brokers: [process.env.KAFKA_HOST],
-    clientId: 'ABC',
+    clientId: 'publisher-kafka-lambda',
     ssl: {
       rejectUnauthorized: true
     },
@@ -20,10 +19,17 @@ async function handler(event, context, callback) {
   const producer = client.producer();
 
   try {
+    const callbackId = event.callback_id.split('_');
+    const rideId = Number(callbackId[callbackId.length - 1]);
     await producer.connect();
     await producer.send({
-      topic: event.topic,
-      messages: event.messages,
+      topic: 'ride__accepted',
+      messages: [{
+        value: JSON.stringify({
+          rideId,
+          driverId: event.user.id,
+        })
+      }],
     });
     callback(null, {
       statusCode: 200,
