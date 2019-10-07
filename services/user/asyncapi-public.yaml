@@ -1,0 +1,17 @@
+asyncapi: '2.0.0'
+info:
+  title: User Public API
+  version: '1.0.0'
+
+servers:
+  dev:
+    url: http://localhost:3000/ws
+    protocol: ws
+
+channels:
+  ride/requested:
+    publish:
+      $ref: '../definitions.yaml#/operations/rideRequested'
+  ride/assigned:
+    subscribe:
+      $ref: '../definitions.yaml#/operations/rideAssigned'

@@ -1,0 +1,2461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User API 1.0.0 documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/atom-one-dark.min.css" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <div class="relative md:flex lg:flex xl:flex">
+    
+
+<input id="burger-menu" type="checkbox" />
+<label for="burger-menu" class="shadow">
+  <div class="wrapper">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</label>
+<div class="sidebar-panel fixed pin-t pin-l pin-b w-64 bg-grey-lighter font-sans pt-8 pr-4 pb-4 pl-4">
+  <div class="sidebar-panel__content">
+    
+    <h1 class="text-2xl font-thin">User API 1.0.0</h1>
+    
+    <ul class="text-sm mt-10 list-reset mt-2">
+      <li class="mb-3">
+        <a class="js-menu-item text-grey-darkest no-underline" href="#introduction">Introduction</a>
+      </li>
+      
+      <li class="mb-3">
+        <a class="js-menu-item text-grey-darkest no-underline" href="#servers">Servers</a>
+      </li>
+      
+    </ul>
+    
+    <h2 class="text-xs uppercase text-grey mt-10 mb-4 font-thin">Operations</h2>
+    <ul class="text-sm list-reset mt-2">
+      
+
+      <!--Without tags in sidebar-->
+      
+      <li>
+        
+        
+        <a class="js-menu-item flex break-words no-underline text-grey-darkest mt-8 sm:mt-8 md:mt-3"
+          href="#operation-subscribe-ride/requested">
+          <span class="bg-green-dark font-bold no-underline text-white uppercase p-1 mr-2 rounded"
+            style="height: 21px;font-size: 11px;" title="Subscribe">Sub</span>
+          
+          <span style="padding-top: 2px;">
+            Ride requested
+          </span>
+          
+        </a>
+        
+        </a>
+      </li>
+      
+      <li>
+        
+        <a class="js-menu-item flex break-words no-underline text-grey-darkest mt-8 sm:mt-8 md:mt-3"
+          href="#operation-publish-ride/assigned">
+          <span class="bg-blue-dark font-bold h-6 no-underline text-white uppercase p-1 mr-2 rounded"
+            style="height: 21px;font-size: 11px;" title="Publish">Pub</span>
+          
+          <span style="padding-top: 2px;">
+            Ride assigned
+          </span>
+          
+        </a>
+        
+        
+        </a>
+      </li>
+      
+    </ul>
+    
+    
+  </div>
+</div>
+
+    <div class="content-panel flex-1 leading-loose z-10">
+      <div class="center-block p-8">
+  <a name="introduction"></a>
+  <h1>User API 1.0.0</h1>
+  <div class="leading-normal mb-4">
+    
+    
+  </div>
+
+  <div class="markdown">
+    
+  </div>
+</div>
+
+
+
+<a name="servers"></a>
+<div class="center-block p-8">
+
+  <h2 class="mb-4">Servers</h2>
+
+  
+    <div class="shadow bg-grey-lighter mb-3 px-4 py-3">
+      <div class="flex">
+        <div>
+          <div class="pr-4 font-mono">
+            
+<span class="string-chunk" >tcp:</span><span class="string-chunk" >/</span><span class="string-chunk" >/localhost:9092</span>
+
+
+            
+            <span class="bg-teal font-sans font-bold no-underline text-white uppercase rounded ml-2"
+              style="height: 20px;font-size: 11px;padding: 3px;">kafka</span>
+            
+          </div>
+          <div class="text-xs text-grey-dark">
+            
+          </div>
+        </div>
+      </div>
+
+      
+        <div>
+          
+        </div>
+      
+
+      
+    </div>
+  
+    <div class="shadow bg-grey-lighter mb-3 px-4 py-3">
+      <div class="flex">
+        <div>
+          <div class="pr-4 font-mono">
+            
+<span class="string-chunk" >tcp:</span><span class="string-chunk" >/</span><span class="string-chunk" >/velomobile-01</span><span class="string-chunk" >.srvs</span><span class="string-chunk" >.cloudkafka</span><span class="string-chunk" >.com:9094</span>
+
+
+            
+            <span class="bg-teal font-sans font-bold no-underline text-white uppercase rounded ml-2"
+              style="height: 20px;font-size: 11px;padding: 3px;">kafka</span>
+            
+          </div>
+          <div class="text-xs text-grey-dark">
+            
+          </div>
+        </div>
+      </div>
+
+      
+        <div>
+          
+        </div>
+      
+
+      
+    </div>
+  
+
+</div>
+
+
+
+
+
+<a name="operations"></a>
+<h2 class="mb-4 ml-8">Operations</h2>
+
+
+  <div class="responsive-container">
+    
+    
+      
+
+<a name="operation-subscribe-ride/requested"></a>
+<div class="center-block p-8">
+  <div class="operation pt-8 pb-8">
+    <h3 class="font-mono text-base">
+      
+      
+      <span class="font-mono border border-green-dark text-green-dark uppercase p-1 rounded" title="Subscribe">Sub</span>
+      
+      
+<span class="string-chunk" >ride</span><span class="string-chunk" >/requested</span>
+
+    </h3>
+
+    <div class="mt-4 mb-4 markdown"></div>
+
+    <p class="text-grey text-sm">Ride requested</p>
+    <div class="mt-4 mb-4 markdown"><p>The user requested a ride.</p>
+</div>
+
+    
+      <p>Accepts the following message:</p>
+      
+
+<div class="bg-grey-lighter rounded p-4 mt-2">
+  <div class="text-sm text-grey-darker mb-2">
+    
+    
+      
+    
+  </div>
+  <p class="text-grey-dark text-sm"></p>
+  <div class="mt-4 mb-4 markdown"></div>
+  
+<div>
+  
+
+<div class="bg-grey-lighter  rounded">
+  <div class="is-open">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">Payload</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">user</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">id</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Id of the user.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">fullName</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">ride</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">id</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Id of the user.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">from</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Position where the ride starts from.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">latitude</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least -90">>= -90</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 90"><= 90</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Latitude of the starting point.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">longitude</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least -180">>= -180</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 180"><= 180</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Longitude of the starting point.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">friendlyName</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Human-friendly name of the location.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">to</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Position where the ride finishes.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">latitude</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least -90">>= -90</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 90"><= 90</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Latitude of the starting point.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">longitude</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least -180">>= -180</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 180"><= 180</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Longitude of the starting point.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">friendlyName</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Human-friendly name of the location.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">price</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least 0">>= 0</span>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Price of the ride in Euros.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">sentAt</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+              <span class="bg-yellow-dark font-bold no-underline text-black rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;">date-time</span>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Date and time when the message was sent.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+  
+</div>
+
+
+    
+
+    
+<div class="mt-4">
+  
+</div>
+
+
+  </div>
+</div>
+
+<div class="right-block p-8">
+  <h4 class="text-lg text-white mb-4">Examples</h4>
+
+  
+    
+
+<form>
+  <input type="radio" checked id="example-payload--eyJwYXlsb2FkIjp7InR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7InVzZXIiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIHVzZXIuIn0sImZ1bGxOYW1lIjp7InR5cGUiOiJzdHJpbmcifX19LCJyaWRlIjp7InR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7ImlkIjp7InR5cGUiOiJzdHJpbmciLCJkZXNjcmlwdGlvbiI6IklkIG9mIHRoZSB1c2VyLiJ9LCJmcm9tIjp7ImRlc2NyaXB0aW9uIjoiUG9zaXRpb24gd2hlcmUgdGhlIHJpZGUgc3RhcnRzIGZyb20uIiwidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsibGF0aXR1ZGUiOnsidHlwZSI6Im51bWJlciIsIm1pbmltdW0iOi05MCwibWF4aW11bSI6OTAsImRlc2NyaXB0aW9uIjoiTGF0aXR1ZGUgb2YgdGhlIHN0YXJ0aW5nIHBvaW50LiJ9LCJsb25naXR1ZGUiOnsidHlwZSI6Im51bWJlciIsIm1pbmltdW0iOi0xODAsIm1heGltdW0iOjE4MCwiZGVzY3JpcHRpb24iOiJMb25naXR1ZGUgb2YgdGhlIHN0YXJ0aW5nIHBvaW50LiJ9LCJmcmllbmRseU5hbWUiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSHVtYW4tZnJpZW5kbHkgbmFtZSBvZiB0aGUgbG9jYXRpb24uIn19fSwidG8iOnsiZGVzY3JpcHRpb24iOiJQb3NpdGlvbiB3aGVyZSB0aGUgcmlkZSBmaW5pc2hlcy4iLCJ0eXBlIjoib2JqZWN0IiwicHJvcGVydGllcyI6eyJsYXRpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTkwLCJtYXhpbXVtIjo5MCwiZGVzY3JpcHRpb24iOiJMYXRpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImxvbmdpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTE4MCwibWF4aW11bSI6MTgwLCJkZXNjcmlwdGlvbiI6IkxvbmdpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImZyaWVuZGx5TmFtZSI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJIdW1hbi1mcmllbmRseSBuYW1lIG9mIHRoZSBsb2NhdGlvbi4ifX19LCJwcmljZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6MCwiZGVzY3JpcHRpb24iOiJQcmljZSBvZiB0aGUgcmlkZSBpbiBFdXJvcy4ifX19LCJzZW50QXQiOnsidHlwZSI6InN0cmluZyIsImZvcm1hdCI6ImRhdGUtdGltZSIsImRlc2NyaXB0aW9uIjoiRGF0ZSBhbmQgdGltZSB3aGVuIHRoZSBtZXNzYWdlIHdhcyBzZW50LiJ9fX0sInNjaGVtYUZvcm1hdCI6ImFwcGxpY2F0aW9uL3ZuZC5hYWkuYXN5bmNhcGk7dmVyc2lvbj0yLjAuMCJ9" name="tab" class="examples-payload-tab hidden" />
+  <label for="example-payload--eyJwYXlsb2FkIjp7InR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7InVzZXIiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIHVzZXIuIn0sImZ1bGxOYW1lIjp7InR5cGUiOiJzdHJpbmcifX19LCJyaWRlIjp7InR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7ImlkIjp7InR5cGUiOiJzdHJpbmciLCJkZXNjcmlwdGlvbiI6IklkIG9mIHRoZSB1c2VyLiJ9LCJmcm9tIjp7ImRlc2NyaXB0aW9uIjoiUG9zaXRpb24gd2hlcmUgdGhlIHJpZGUgc3RhcnRzIGZyb20uIiwidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsibGF0aXR1ZGUiOnsidHlwZSI6Im51bWJlciIsIm1pbmltdW0iOi05MCwibWF4aW11bSI6OTAsImRlc2NyaXB0aW9uIjoiTGF0aXR1ZGUgb2YgdGhlIHN0YXJ0aW5nIHBvaW50LiJ9LCJsb25naXR1ZGUiOnsidHlwZSI6Im51bWJlciIsIm1pbmltdW0iOi0xODAsIm1heGltdW0iOjE4MCwiZGVzY3JpcHRpb24iOiJMb25naXR1ZGUgb2YgdGhlIHN0YXJ0aW5nIHBvaW50LiJ9LCJmcmllbmRseU5hbWUiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSHVtYW4tZnJpZW5kbHkgbmFtZSBvZiB0aGUgbG9jYXRpb24uIn19fSwidG8iOnsiZGVzY3JpcHRpb24iOiJQb3NpdGlvbiB3aGVyZSB0aGUgcmlkZSBmaW5pc2hlcy4iLCJ0eXBlIjoib2JqZWN0IiwicHJvcGVydGllcyI6eyJsYXRpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTkwLCJtYXhpbXVtIjo5MCwiZGVzY3JpcHRpb24iOiJMYXRpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImxvbmdpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTE4MCwibWF4aW11bSI6MTgwLCJkZXNjcmlwdGlvbiI6IkxvbmdpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImZyaWVuZGx5TmFtZSI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJIdW1hbi1mcmllbmRseSBuYW1lIG9mIHRoZSBsb2NhdGlvbi4ifX19LCJwcmljZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6MCwiZGVzY3JpcHRpb24iOiJQcmljZSBvZiB0aGUgcmlkZSBpbiBFdXJvcy4ifX19LCJzZW50QXQiOnsidHlwZSI6InN0cmluZyIsImZvcm1hdCI6ImRhdGUtdGltZSIsImRlc2NyaXB0aW9uIjoiRGF0ZSBhbmQgdGltZSB3aGVuIHRoZSBtZXNzYWdlIHdhcyBzZW50LiJ9fX0sInNjaGVtYUZvcm1hdCI6ImFwcGxpY2F0aW9uL3ZuZC5hYWkuYXN5bmNhcGk7dmVyc2lvbj0yLjAuMCJ9" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
+
+  <input type="radio" id="example-headers--eyJwYXlsb2FkIjp7InR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7InVzZXIiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIHVzZXIuIn0sImZ1bGxOYW1lIjp7InR5cGUiOiJzdHJpbmcifX19LCJyaWRlIjp7InR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7ImlkIjp7InR5cGUiOiJzdHJpbmciLCJkZXNjcmlwdGlvbiI6IklkIG9mIHRoZSB1c2VyLiJ9LCJmcm9tIjp7ImRlc2NyaXB0aW9uIjoiUG9zaXRpb24gd2hlcmUgdGhlIHJpZGUgc3RhcnRzIGZyb20uIiwidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsibGF0aXR1ZGUiOnsidHlwZSI6Im51bWJlciIsIm1pbmltdW0iOi05MCwibWF4aW11bSI6OTAsImRlc2NyaXB0aW9uIjoiTGF0aXR1ZGUgb2YgdGhlIHN0YXJ0aW5nIHBvaW50LiJ9LCJsb25naXR1ZGUiOnsidHlwZSI6Im51bWJlciIsIm1pbmltdW0iOi0xODAsIm1heGltdW0iOjE4MCwiZGVzY3JpcHRpb24iOiJMb25naXR1ZGUgb2YgdGhlIHN0YXJ0aW5nIHBvaW50LiJ9LCJmcmllbmRseU5hbWUiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSHVtYW4tZnJpZW5kbHkgbmFtZSBvZiB0aGUgbG9jYXRpb24uIn19fSwidG8iOnsiZGVzY3JpcHRpb24iOiJQb3NpdGlvbiB3aGVyZSB0aGUgcmlkZSBmaW5pc2hlcy4iLCJ0eXBlIjoib2JqZWN0IiwicHJvcGVydGllcyI6eyJsYXRpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTkwLCJtYXhpbXVtIjo5MCwiZGVzY3JpcHRpb24iOiJMYXRpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImxvbmdpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTE4MCwibWF4aW11bSI6MTgwLCJkZXNjcmlwdGlvbiI6IkxvbmdpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImZyaWVuZGx5TmFtZSI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJIdW1hbi1mcmllbmRseSBuYW1lIG9mIHRoZSBsb2NhdGlvbi4ifX19LCJwcmljZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6MCwiZGVzY3JpcHRpb24iOiJQcmljZSBvZiB0aGUgcmlkZSBpbiBFdXJvcy4ifX19LCJzZW50QXQiOnsidHlwZSI6InN0cmluZyIsImZvcm1hdCI6ImRhdGUtdGltZSIsImRlc2NyaXB0aW9uIjoiRGF0ZSBhbmQgdGltZSB3aGVuIHRoZSBtZXNzYWdlIHdhcyBzZW50LiJ9fX0sInNjaGVtYUZvcm1hdCI6ImFwcGxpY2F0aW9uL3ZuZC5hYWkuYXN5bmNhcGk7dmVyc2lvbj0yLjAuMCJ9" name="tab" class="examples-headers-tab hidden" disabled />
+  <label for="example-headers--eyJwYXlsb2FkIjp7InR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7InVzZXIiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIHVzZXIuIn0sImZ1bGxOYW1lIjp7InR5cGUiOiJzdHJpbmcifX19LCJyaWRlIjp7InR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7ImlkIjp7InR5cGUiOiJzdHJpbmciLCJkZXNjcmlwdGlvbiI6IklkIG9mIHRoZSB1c2VyLiJ9LCJmcm9tIjp7ImRlc2NyaXB0aW9uIjoiUG9zaXRpb24gd2hlcmUgdGhlIHJpZGUgc3RhcnRzIGZyb20uIiwidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsibGF0aXR1ZGUiOnsidHlwZSI6Im51bWJlciIsIm1pbmltdW0iOi05MCwibWF4aW11bSI6OTAsImRlc2NyaXB0aW9uIjoiTGF0aXR1ZGUgb2YgdGhlIHN0YXJ0aW5nIHBvaW50LiJ9LCJsb25naXR1ZGUiOnsidHlwZSI6Im51bWJlciIsIm1pbmltdW0iOi0xODAsIm1heGltdW0iOjE4MCwiZGVzY3JpcHRpb24iOiJMb25naXR1ZGUgb2YgdGhlIHN0YXJ0aW5nIHBvaW50LiJ9LCJmcmllbmRseU5hbWUiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSHVtYW4tZnJpZW5kbHkgbmFtZSBvZiB0aGUgbG9jYXRpb24uIn19fSwidG8iOnsiZGVzY3JpcHRpb24iOiJQb3NpdGlvbiB3aGVyZSB0aGUgcmlkZSBmaW5pc2hlcy4iLCJ0eXBlIjoib2JqZWN0IiwicHJvcGVydGllcyI6eyJsYXRpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTkwLCJtYXhpbXVtIjo5MCwiZGVzY3JpcHRpb24iOiJMYXRpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImxvbmdpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTE4MCwibWF4aW11bSI6MTgwLCJkZXNjcmlwdGlvbiI6IkxvbmdpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImZyaWVuZGx5TmFtZSI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJIdW1hbi1mcmllbmRseSBuYW1lIG9mIHRoZSBsb2NhdGlvbi4ifX19LCJwcmljZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6MCwiZGVzY3JpcHRpb24iOiJQcmljZSBvZiB0aGUgcmlkZSBpbiBFdXJvcy4ifX19LCJzZW50QXQiOnsidHlwZSI6InN0cmluZyIsImZvcm1hdCI6ImRhdGUtdGltZSIsImRlc2NyaXB0aW9uIjoiRGF0ZSBhbmQgdGltZSB3aGVuIHRoZSBtZXNzYWdlIHdhcyBzZW50LiJ9fX0sInNjaGVtYUZvcm1hdCI6ImFwcGxpY2F0aW9uL3ZuZC5hYWkuYXN5bmNhcGk7dmVyc2lvbj0yLjAuMCJ9"
+      class="py-1 px-2 mr-2 mb-4 text-sm border rounded focus:outline-none cursor-pointer text-grey-dark border-grey-dark opacity-25" title="This message does not have headers">Headers</label>
+
+  <div class="payload-examples mt-4">
+    
+    <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
+  "user": {
+    "id": "string",
+    "fullName": "string"
+  },
+  "ride": {
+    "id": "string",
+    "from": {
+      "latitude": -90,
+      "longitude": -180,
+      "friendlyName": "string"
+    },
+    "to": {
+      "latitude": -90,
+      "longitude": -180,
+      "friendlyName": "string"
+    },
+    "price": 0
+  },
+  "sentAt": "2019-10-07T12:14:36Z"
+}</code></pre>
+    <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
+    
+  </div>
+
+  <div class="headers-examples mt-4">
+    
+  </div>
+</form>
+
+
+  
+</div>
+
+
+
+    
+  </div>
+
+  <div class="responsive-container">
+    
+      
+
+<a name="operation-publish-ride/assigned"></a>
+<div class="center-block p-8">
+  <div class="operation pt-8 pb-8">
+    <h3 class="font-mono text-base">
+      
+      <span class="font-mono border border-blue text-blue uppercase p-1 rounded" title="Publish">Pub</span>
+      
+      
+      
+<span class="string-chunk" >ride</span><span class="string-chunk" >/assigned</span>
+
+    </h3>
+
+    <div class="mt-4 mb-4 markdown"></div>
+
+    <p class="text-grey text-sm">Ride assigned</p>
+    <div class="mt-4 mb-4 markdown"></div>
+
+    
+      <p>Accepts the following message:</p>
+      
+
+<div class="bg-grey-lighter rounded p-4 mt-2">
+  <div class="text-sm text-grey-darker mb-2">
+    
+    
+      
+    
+  </div>
+  <p class="text-grey-dark text-sm"></p>
+  <div class="mt-4 mb-4 markdown"></div>
+  
+<div>
+  
+
+<div class="bg-grey-lighter  rounded">
+  <div class="is-open">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">Payload</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">user</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">id</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Id of the user.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">fullName</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">driver</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">id</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Id of the driver.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">fullName</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">ride</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lighter py-4 rounded">
+        
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">id</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Id of the user.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">from</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Position where the ride starts from.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">latitude</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least -90">>= -90</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 90"><= 90</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Latitude of the starting point.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">longitude</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least -180">>= -180</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 180"><= 180</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Longitude of the starting point.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">friendlyName</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Human-friendly name of the location.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class="js-prop cursor-pointer py-2 flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">to</span>
+        
+        <svg class="expand" version="1.1" viewBox="0 0 24 24" x="0"
+          xmlns="http://www.w3.org/2000/svg" y="0">
+          <polygon points="17.3 8.3 12 13.6 6.7 8.3 5.3 9.7 12 16.4 18.7 9.7 "></polygon>
+        </svg>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+object
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Position where the ride finishes.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+      <div class="children bg-grey-lightest py-4 rounded">
+        
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">latitude</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least -90">>= -90</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 90"><= 90</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Latitude of the starting point.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">longitude</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least -180">>= -180</span>
+            
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At most 180"><= 180</span>
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Longitude of the starting point.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">friendlyName</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Human-friendly name of the location.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lighter pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">price</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+number
+          
+          
+          
+          <div class="inline-block">
+            
+            
+              <span class="bg-purple-dark font-bold no-underline text-white rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;" title="At least 0">>= 0</span>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Price of the ride in Euros.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+          
+            
+
+<div class="bg-grey-lightest pl-8 pr-8 rounded">
+  <div class="">
+    <div class=" flex property">
+      <div class="pr-4" style="margin-top:-2px; min-width: 25%;">
+        <span class="text-sm " style="word-break: break-word;">sentAt</span>
+        
+        
+      </div>
+
+      <div>
+        <div class="capitalize text-sm text-teal font-bold">
+          
+string
+          
+          
+          
+          <div class="inline-block">
+            
+              <span class="bg-yellow-dark font-bold no-underline text-black rounded lowercase ml-2"
+                style="height: 20px;font-size: 11px;padding: 3px;">date-time</span>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </div>
+        </div>
+
+        
+          <div class="text-sm markdown"><p>Date and time when the message was sent.</p>
+</div>
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+    
+  </div>
+</div>
+
+
+          
+        
+
+        
+
+        
+          
+            <p class="pl-6 mb-2 mt-4 text-xs text-grey-darker">Additional properties are allowed.</p>
+          
+        
+
+        
+
+        
+
+        
+      </div>
+    
+  </div>
+</div>
+
+
+</div>
+
+  
+</div>
+
+
+    
+
+    
+<div class="mt-4">
+  
+</div>
+
+
+  </div>
+</div>
+
+<div class="right-block p-8">
+  <h4 class="text-lg text-white mb-4">Examples</h4>
+
+  
+    
+
+<form>
+  <input type="radio" checked id="example-payload--eyJwYXlsb2FkIjp7InR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7InVzZXIiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIHVzZXIuIn0sImZ1bGxOYW1lIjp7InR5cGUiOiJzdHJpbmcifX19LCJkcml2ZXIiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIGRyaXZlci4ifSwiZnVsbE5hbWUiOnsidHlwZSI6InN0cmluZyJ9fX0sInJpZGUiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIHVzZXIuIn0sImZyb20iOnsiZGVzY3JpcHRpb24iOiJQb3NpdGlvbiB3aGVyZSB0aGUgcmlkZSBzdGFydHMgZnJvbS4iLCJ0eXBlIjoib2JqZWN0IiwicHJvcGVydGllcyI6eyJsYXRpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTkwLCJtYXhpbXVtIjo5MCwiZGVzY3JpcHRpb24iOiJMYXRpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImxvbmdpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTE4MCwibWF4aW11bSI6MTgwLCJkZXNjcmlwdGlvbiI6IkxvbmdpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImZyaWVuZGx5TmFtZSI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJIdW1hbi1mcmllbmRseSBuYW1lIG9mIHRoZSBsb2NhdGlvbi4ifX19LCJ0byI6eyJkZXNjcmlwdGlvbiI6IlBvc2l0aW9uIHdoZXJlIHRoZSByaWRlIGZpbmlzaGVzLiIsInR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7ImxhdGl0dWRlIjp7InR5cGUiOiJudW1iZXIiLCJtaW5pbXVtIjotOTAsIm1heGltdW0iOjkwLCJkZXNjcmlwdGlvbiI6IkxhdGl0dWRlIG9mIHRoZSBzdGFydGluZyBwb2ludC4ifSwibG9uZ2l0dWRlIjp7InR5cGUiOiJudW1iZXIiLCJtaW5pbXVtIjotMTgwLCJtYXhpbXVtIjoxODAsImRlc2NyaXB0aW9uIjoiTG9uZ2l0dWRlIG9mIHRoZSBzdGFydGluZyBwb2ludC4ifSwiZnJpZW5kbHlOYW1lIjp7InR5cGUiOiJzdHJpbmciLCJkZXNjcmlwdGlvbiI6Ikh1bWFuLWZyaWVuZGx5IG5hbWUgb2YgdGhlIGxvY2F0aW9uLiJ9fX0sInByaWNlIjp7InR5cGUiOiJudW1iZXIiLCJtaW5pbXVtIjowLCJkZXNjcmlwdGlvbiI6IlByaWNlIG9mIHRoZSByaWRlIGluIEV1cm9zLiJ9fX0sInNlbnRBdCI6eyJ0eXBlIjoic3RyaW5nIiwiZm9ybWF0IjoiZGF0ZS10aW1lIiwiZGVzY3JpcHRpb24iOiJEYXRlIGFuZCB0aW1lIHdoZW4gdGhlIG1lc3NhZ2Ugd2FzIHNlbnQuIn19fSwic2NoZW1hRm9ybWF0IjoiYXBwbGljYXRpb24vdm5kLmFhaS5hc3luY2FwaTt2ZXJzaW9uPTIuMC4wIn0=" name="tab" class="examples-payload-tab hidden" />
+  <label for="example-payload--eyJwYXlsb2FkIjp7InR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7InVzZXIiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIHVzZXIuIn0sImZ1bGxOYW1lIjp7InR5cGUiOiJzdHJpbmcifX19LCJkcml2ZXIiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIGRyaXZlci4ifSwiZnVsbE5hbWUiOnsidHlwZSI6InN0cmluZyJ9fX0sInJpZGUiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIHVzZXIuIn0sImZyb20iOnsiZGVzY3JpcHRpb24iOiJQb3NpdGlvbiB3aGVyZSB0aGUgcmlkZSBzdGFydHMgZnJvbS4iLCJ0eXBlIjoib2JqZWN0IiwicHJvcGVydGllcyI6eyJsYXRpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTkwLCJtYXhpbXVtIjo5MCwiZGVzY3JpcHRpb24iOiJMYXRpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImxvbmdpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTE4MCwibWF4aW11bSI6MTgwLCJkZXNjcmlwdGlvbiI6IkxvbmdpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImZyaWVuZGx5TmFtZSI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJIdW1hbi1mcmllbmRseSBuYW1lIG9mIHRoZSBsb2NhdGlvbi4ifX19LCJ0byI6eyJkZXNjcmlwdGlvbiI6IlBvc2l0aW9uIHdoZXJlIHRoZSByaWRlIGZpbmlzaGVzLiIsInR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7ImxhdGl0dWRlIjp7InR5cGUiOiJudW1iZXIiLCJtaW5pbXVtIjotOTAsIm1heGltdW0iOjkwLCJkZXNjcmlwdGlvbiI6IkxhdGl0dWRlIG9mIHRoZSBzdGFydGluZyBwb2ludC4ifSwibG9uZ2l0dWRlIjp7InR5cGUiOiJudW1iZXIiLCJtaW5pbXVtIjotMTgwLCJtYXhpbXVtIjoxODAsImRlc2NyaXB0aW9uIjoiTG9uZ2l0dWRlIG9mIHRoZSBzdGFydGluZyBwb2ludC4ifSwiZnJpZW5kbHlOYW1lIjp7InR5cGUiOiJzdHJpbmciLCJkZXNjcmlwdGlvbiI6Ikh1bWFuLWZyaWVuZGx5IG5hbWUgb2YgdGhlIGxvY2F0aW9uLiJ9fX0sInByaWNlIjp7InR5cGUiOiJudW1iZXIiLCJtaW5pbXVtIjowLCJkZXNjcmlwdGlvbiI6IlByaWNlIG9mIHRoZSByaWRlIGluIEV1cm9zLiJ9fX0sInNlbnRBdCI6eyJ0eXBlIjoic3RyaW5nIiwiZm9ybWF0IjoiZGF0ZS10aW1lIiwiZGVzY3JpcHRpb24iOiJEYXRlIGFuZCB0aW1lIHdoZW4gdGhlIG1lc3NhZ2Ugd2FzIHNlbnQuIn19fSwic2NoZW1hRm9ybWF0IjoiYXBwbGljYXRpb24vdm5kLmFhaS5hc3luY2FwaTt2ZXJzaW9uPTIuMC4wIn0=" class="py-1 px-2 mr-2 mb-4 text-grey-lightest text-sm border rounded focus:outline-none cursor-pointer text-grey-lightest" >Payload</label>
+
+  <input type="radio" id="example-headers--eyJwYXlsb2FkIjp7InR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7InVzZXIiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIHVzZXIuIn0sImZ1bGxOYW1lIjp7InR5cGUiOiJzdHJpbmcifX19LCJkcml2ZXIiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIGRyaXZlci4ifSwiZnVsbE5hbWUiOnsidHlwZSI6InN0cmluZyJ9fX0sInJpZGUiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIHVzZXIuIn0sImZyb20iOnsiZGVzY3JpcHRpb24iOiJQb3NpdGlvbiB3aGVyZSB0aGUgcmlkZSBzdGFydHMgZnJvbS4iLCJ0eXBlIjoib2JqZWN0IiwicHJvcGVydGllcyI6eyJsYXRpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTkwLCJtYXhpbXVtIjo5MCwiZGVzY3JpcHRpb24iOiJMYXRpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImxvbmdpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTE4MCwibWF4aW11bSI6MTgwLCJkZXNjcmlwdGlvbiI6IkxvbmdpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImZyaWVuZGx5TmFtZSI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJIdW1hbi1mcmllbmRseSBuYW1lIG9mIHRoZSBsb2NhdGlvbi4ifX19LCJ0byI6eyJkZXNjcmlwdGlvbiI6IlBvc2l0aW9uIHdoZXJlIHRoZSByaWRlIGZpbmlzaGVzLiIsInR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7ImxhdGl0dWRlIjp7InR5cGUiOiJudW1iZXIiLCJtaW5pbXVtIjotOTAsIm1heGltdW0iOjkwLCJkZXNjcmlwdGlvbiI6IkxhdGl0dWRlIG9mIHRoZSBzdGFydGluZyBwb2ludC4ifSwibG9uZ2l0dWRlIjp7InR5cGUiOiJudW1iZXIiLCJtaW5pbXVtIjotMTgwLCJtYXhpbXVtIjoxODAsImRlc2NyaXB0aW9uIjoiTG9uZ2l0dWRlIG9mIHRoZSBzdGFydGluZyBwb2ludC4ifSwiZnJpZW5kbHlOYW1lIjp7InR5cGUiOiJzdHJpbmciLCJkZXNjcmlwdGlvbiI6Ikh1bWFuLWZyaWVuZGx5IG5hbWUgb2YgdGhlIGxvY2F0aW9uLiJ9fX0sInByaWNlIjp7InR5cGUiOiJudW1iZXIiLCJtaW5pbXVtIjowLCJkZXNjcmlwdGlvbiI6IlByaWNlIG9mIHRoZSByaWRlIGluIEV1cm9zLiJ9fX0sInNlbnRBdCI6eyJ0eXBlIjoic3RyaW5nIiwiZm9ybWF0IjoiZGF0ZS10aW1lIiwiZGVzY3JpcHRpb24iOiJEYXRlIGFuZCB0aW1lIHdoZW4gdGhlIG1lc3NhZ2Ugd2FzIHNlbnQuIn19fSwic2NoZW1hRm9ybWF0IjoiYXBwbGljYXRpb24vdm5kLmFhaS5hc3luY2FwaTt2ZXJzaW9uPTIuMC4wIn0=" name="tab" class="examples-headers-tab hidden" disabled />
+  <label for="example-headers--eyJwYXlsb2FkIjp7InR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7InVzZXIiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIHVzZXIuIn0sImZ1bGxOYW1lIjp7InR5cGUiOiJzdHJpbmcifX19LCJkcml2ZXIiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIGRyaXZlci4ifSwiZnVsbE5hbWUiOnsidHlwZSI6InN0cmluZyJ9fX0sInJpZGUiOnsidHlwZSI6Im9iamVjdCIsInByb3BlcnRpZXMiOnsiaWQiOnsidHlwZSI6InN0cmluZyIsImRlc2NyaXB0aW9uIjoiSWQgb2YgdGhlIHVzZXIuIn0sImZyb20iOnsiZGVzY3JpcHRpb24iOiJQb3NpdGlvbiB3aGVyZSB0aGUgcmlkZSBzdGFydHMgZnJvbS4iLCJ0eXBlIjoib2JqZWN0IiwicHJvcGVydGllcyI6eyJsYXRpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTkwLCJtYXhpbXVtIjo5MCwiZGVzY3JpcHRpb24iOiJMYXRpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImxvbmdpdHVkZSI6eyJ0eXBlIjoibnVtYmVyIiwibWluaW11bSI6LTE4MCwibWF4aW11bSI6MTgwLCJkZXNjcmlwdGlvbiI6IkxvbmdpdHVkZSBvZiB0aGUgc3RhcnRpbmcgcG9pbnQuIn0sImZyaWVuZGx5TmFtZSI6eyJ0eXBlIjoic3RyaW5nIiwiZGVzY3JpcHRpb24iOiJIdW1hbi1mcmllbmRseSBuYW1lIG9mIHRoZSBsb2NhdGlvbi4ifX19LCJ0byI6eyJkZXNjcmlwdGlvbiI6IlBvc2l0aW9uIHdoZXJlIHRoZSByaWRlIGZpbmlzaGVzLiIsInR5cGUiOiJvYmplY3QiLCJwcm9wZXJ0aWVzIjp7ImxhdGl0dWRlIjp7InR5cGUiOiJudW1iZXIiLCJtaW5pbXVtIjotOTAsIm1heGltdW0iOjkwLCJkZXNjcmlwdGlvbiI6IkxhdGl0dWRlIG9mIHRoZSBzdGFydGluZyBwb2ludC4ifSwibG9uZ2l0dWRlIjp7InR5cGUiOiJudW1iZXIiLCJtaW5pbXVtIjotMTgwLCJtYXhpbXVtIjoxODAsImRlc2NyaXB0aW9uIjoiTG9uZ2l0dWRlIG9mIHRoZSBzdGFydGluZyBwb2ludC4ifSwiZnJpZW5kbHlOYW1lIjp7InR5cGUiOiJzdHJpbmciLCJkZXNjcmlwdGlvbiI6Ikh1bWFuLWZyaWVuZGx5IG5hbWUgb2YgdGhlIGxvY2F0aW9uLiJ9fX0sInByaWNlIjp7InR5cGUiOiJudW1iZXIiLCJtaW5pbXVtIjowLCJkZXNjcmlwdGlvbiI6IlByaWNlIG9mIHRoZSByaWRlIGluIEV1cm9zLiJ9fX0sInNlbnRBdCI6eyJ0eXBlIjoic3RyaW5nIiwiZm9ybWF0IjoiZGF0ZS10aW1lIiwiZGVzY3JpcHRpb24iOiJEYXRlIGFuZCB0aW1lIHdoZW4gdGhlIG1lc3NhZ2Ugd2FzIHNlbnQuIn19fSwic2NoZW1hRm9ybWF0IjoiYXBwbGljYXRpb24vdm5kLmFhaS5hc3luY2FwaTt2ZXJzaW9uPTIuMC4wIn0="
+      class="py-1 px-2 mr-2 mb-4 text-sm border rounded focus:outline-none cursor-pointer text-grey-dark border-grey-dark opacity-25" title="This message does not have headers">Headers</label>
+
+  <div class="payload-examples mt-4">
+    
+    <pre class="hljs mb-4 border border-grey-darkest rounded"><code>{
+  "user": {
+    "id": "string",
+    "fullName": "string"
+  },
+  "driver": {
+    "id": "string",
+    "fullName": "string"
+  },
+  "ride": {
+    "id": "string",
+    "from": {
+      "latitude": -90,
+      "longitude": -180,
+      "friendlyName": "string"
+    },
+    "to": {
+      "latitude": -90,
+      "longitude": -180,
+      "friendlyName": "string"
+    },
+    "price": 0
+  },
+  "sentAt": "2019-10-07T12:14:36Z"
+}</code></pre>
+    <h6 class="text-xs font-bold text-grey-darker italic">This example has been generated automatically.</h6>
+    
+  </div>
+
+  <div class="headers-examples mt-4">
+    
+  </div>
+</form>
+
+
+  
+</div>
+
+
+
+    
+    
+  </div>
+
+
+
+
+    </div>
+    <div class="examples-panel absolute pin-t pin-r pin-b"></div>
+  </div>
+  <script src="js/highlight.min.js" type="application/javascript"></script>
+  <script src="js/main.js" type="application/javascript"></script>
+</body>
+</html>
