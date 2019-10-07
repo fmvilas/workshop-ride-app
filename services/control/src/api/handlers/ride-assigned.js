@@ -1,5 +1,4 @@
 const postSlack = require('../../lib/post-slack');
-const db = require('../../lib/db');
 const handler = module.exports = {};
 
 /**
@@ -30,20 +29,4 @@ handler.rideAssigned = async ({message}) => {
     text: `Ride #${message.payload.ride.id} (requested by ${message.payload.user.fullName}) has been assigned to driver ${message.payload.driver.fullName}.`,
     channel: 'workshop',
   });
-
-  postSlack({
-    text: `:parrot: Yay! You have been assigned the ride #${message.payload.ride.id}. You can now go to pick up ${message.payload.user.fullName}.`,
-    channel: `@${message.payload.driver.id}`,
-  });
-
-  const drivers = db.list('drivers');
-
-  await Promise.all(Object.keys(drivers).map(driverId => {
-    if (driverId === message.payload.driver.id) return;
-
-    return postSlack({
-      text: `Sorry, you lost the ride #${message.payload.ride.id}. Keep trying!`,
-      channel: `@${driverId}`,
-    });
-  }));
 };

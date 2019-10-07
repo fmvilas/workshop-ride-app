@@ -3,6 +3,9 @@ default:
     name: Driver API
     version: 1.0.0
 
+  driver:
+    id: U34F2JRRS
+
   broker:
     kafka:
       clientId: driverApi

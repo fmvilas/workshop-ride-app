@@ -6,6 +6,8 @@ const env = process.env;
 dotenv.config();
 overrideWithEnvVars(config);
 
+config.broker.kafka.consumerOptions.groupId = `userApi-${Date.now()}-${Math.random() * 1000}`;
+
 /**
  * Overrides a config object with the values from environment variables, if found.
  *

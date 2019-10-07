@@ -10,6 +10,9 @@ channels:
   ride/requested:
     publish:
       $ref: '../definitions.yaml#/operations/rideRequested'
+  ride/accepted:
+    subscribe:
+      $ref: '../definitions.yaml#/operations/rideAccepted'
   ride/assigned:
     publish:
       $ref: '../definitions.yaml#/operations/rideAssigned'

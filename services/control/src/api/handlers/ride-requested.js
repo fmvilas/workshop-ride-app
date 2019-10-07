@@ -18,7 +18,7 @@ handler.rideRequested = async ({message}) => {
 
   await Promise.all(Object.keys(drivers).map(driverId => postSlack({
     text: `${user.fullName} has requested a ride.`,
-    channel: `@${driverId}`,
+    channel: driverId,
     attachments: [{
       text: 'Do you want to take it?',
       fallback: 'You are unable to take the ride.',
