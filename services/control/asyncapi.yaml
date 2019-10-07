@@ -8,7 +8,7 @@ servers:
     url: tcp://localhost:9092
     protocol: kafka
   production:
-    url: tcp://pkc-e0x5p.us-east1.gcp.confluent.cloud:9092
+    url: tcp://velomobile-01.srvs.cloudkafka.com:9094
     protocol: kafka
 
 channels:
@@ -31,20 +31,6 @@ channels:
       summary: Ride assigned
       message:
         $ref: '#/components/messages/rideAssigned'
-  ride/changed:
-    publish:
-      operationId: rideChanged
-      summary: Ride status changed
-      message:
-        $ref: '#/components/messages/rideStatus'
-      x-lambda:
-        url: https://gracious-lumiere-20f9f1.netlify.com/.netlify/functions/post-slack
-        method: POST
-        body:
-          text: Ride ${message.payload.ride.id} has been ${message.payload.ride.status}.
-          channel: workshop
-        headers:
-          Content-Type: application/json
 
 components:
   messages:

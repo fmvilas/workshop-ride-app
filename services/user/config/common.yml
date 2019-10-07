@@ -1,17 +1,22 @@
 default:
   app:
-    name: Driver API
+    name: User API
     version: 1.0.0
+
+  ws:
+    topics:
+      - ride__requested
+      - ride__assigned
+    topicSeparator: '__'
 
   broker:
     kafka:
-      clientId: driverApi
+      clientId: userApi
       brokers:
         - velomobile-01.srvs.cloudkafka.com:9094
       consumerOptions:
         groupId: 'replace-me'
       topics:
-        - ride__requested
         - ride__assigned
       topicSeparator: '__'
       topicPrefix:

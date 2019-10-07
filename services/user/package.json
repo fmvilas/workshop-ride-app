@@ -1,5 +1,5 @@
 {
-  "name": "control-panel-api",
+  "name": "user-api",
   "description": "",
   "version": "1.0.0",
   "scripts": {
@@ -9,9 +9,9 @@
     "colors": "^1.4.0",
     "dotenv": "^8.1.0",
     "hermesjs": "2.x",
-    "hermesjs-router": "1.x",
     "hermesjs-kafka": "2.x",
-    
+    "hermesjs-router": "1.x",
+    "hermesjs-ws": "^1.0.0",
     "node-fetch": "^2.6.0",
     "node-yaml-config": "0.0.4"
   }

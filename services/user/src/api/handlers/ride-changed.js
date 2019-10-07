@@ -1,8 +1,8 @@
-const db = require('../../lib/db');
+const fetch = require('node-fetch');
 const handler = module.exports = {};
 
 /**
- * Ride accepted
+ * Ride status changed
  * @param {object} options
  * @param {object} options.message
  * @param {object} options.message.payload.user
@@ -22,18 +22,21 @@ const handler = module.exports = {};
  * @param {number} options.message.payload.ride.to.longitude - Longitude of the starting point.
  * @param {string} options.message.payload.ride.to.friendlyName - Human-friendly name of the location.
  * @param {number} options.message.payload.ride.price - Price of the ride in Euros.
+ * @param {string} options.message.payload.ride.status - Status of the ride.
  * @param {string} options.message.payload.sentAt - Date and time when the message was sent.
  */
-handler.rideAccepted = async ({message}) => {
-  const rideId = message.payload.rideId;
-
-  if (db.get('pendingRides', rideId)) {
-    db.add('rides', rideId, db.get('pendingRides', rideId));
-    db.remove('pendingRides', rideId);
-    db.update('rides', rideId, {
-      driver: db.get('drivers', message.payload.driverId),
-    });
-
-    message.hermes.send(db.get('rides', rideId), null, 'ride/assigned');
-  }
+handler.rideChanged = async ({message}) => {
+  fetch('https://gracious-lumiere-20f9f1.netlify.com/.netlify/functions/post-slack', {
+    method: 'POST',
+    body: JSON.stringify({
+      text: `Ride ${message.payload.ride.id} has been ${message.payload.ride.status}.`,
+      channel: 'workshop'
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(res => res.json())
+    .then(json => console.log(json))
+    .catch(err => { throw err; });
 };

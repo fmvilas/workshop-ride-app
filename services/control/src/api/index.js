@@ -11,7 +11,6 @@ const KafkaAdapter = require('hermesjs-kafka');
 const rideRequested = require('./routes/ride-requested.js');
 const rideAccepted = require('./routes/ride-accepted.js');
 const rideAssigned = require('./routes/ride-assigned.js');
-const rideChanged = require('./routes/ride-changed.js');
 
 app.addAdapter(KafkaAdapter, config.broker.kafka);
 
@@ -23,7 +22,6 @@ app.use(logger);
 app.use(rideRequested);
 app.use(rideAccepted);
 app.useOutbound(rideAssigned);
-app.use(rideChanged);
 
 app.use(errorLogger);
 app.useOutbound(logger);

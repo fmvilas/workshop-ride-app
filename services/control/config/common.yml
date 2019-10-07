@@ -7,14 +7,14 @@ default:
     kafka:
       clientId: controlPanelApi
       brokers:
-        - pkc-e0x5p.us-east1.gcp.confluent.cloud:9092
+        - velomobile-01.srvs.cloudkafka.com:9094
       consumerOptions:
         groupId: 'replace-me'
       topics:
         - ride__requested
         - ride__accepted
-        - ride__changed
       topicSeparator: '__'
+      topicPrefix:
 
 development:
 

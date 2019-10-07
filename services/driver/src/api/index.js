@@ -9,6 +9,7 @@ const errorLogger = require('./middlewares/error-logger');
 const config = require('../lib/config');
 const KafkaAdapter = require('hermesjs-kafka');
 const rideRequested = require('./routes/ride-requested.js');
+const rideAssigned = require('./routes/ride-assigned.js');
 
 app.addAdapter(KafkaAdapter, config.broker.kafka);
 
@@ -18,6 +19,7 @@ app.use(logger);
 
 // Channels
 app.use(rideRequested);
+app.use(rideAssigned);
 
 app.use(errorLogger);
 app.useOutbound(logger);
