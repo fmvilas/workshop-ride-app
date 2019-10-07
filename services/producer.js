@@ -1,43 +1,45 @@
 #!/usr/bin/env node
 
-const Kafka = require('node-rdkafka');
-var producer = new Kafka.Producer({
-  //'debug' : 'all',
-  'metadata.broker.list': process.env.KAFKA_HOST,
-  'security.protocol': 'SASL_SSL',
-  'ssl.endpoint.identification.algorithm': 'https',
-  'sasl.mechanism': 'PLAIN',
-  'sasl.username': process.env.KAFKA_USERNAME,
-  'sasl.password': process.env.KAFKA_PASSWORD,
-  'dr_cb': true,
+const { Kafka } = require('kafkajs');
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+const client = new Kafka({
+  brokers: [process.env.KAFKA_HOST],
+  clientId: 'ABC',
+  ssl: {
+    rejectUnauthorized: true
+  },
+  sasl: {
+    mechanism: 'plain',
+    username: process.env.KAFKA_USERNAME,
+    password: process.env.KAFKA_PASSWORD,
+  },
 });
+const producer = client.producer();
 
-var topicName = 'test-topic';
+const run = async () => {
+  try {
+    await producer.connect();
+    await producer.send({
+      topic: process.env.KAFKA_TOPIC,
+      messages: [{
+        value: JSON.stringify({
+          user: {
+            id: 'fmvilas',
+            fullName: 'Fran Mendez'
+          },
+          ride: {
+            id: 4,
+          }
+        })
+      }],
+    });
+    console.log('Message sent!');
+  } catch (e) {
+    console.error(e);
+  }
+};
 
-//logging debug messages, if debug is enabled
-producer.on('event.log', function (log) {
-  console.log(log);
-});
-
-//logging all errors
-producer.on('event.error', function (err) {
-  console.error('Error from producer');
-  console.error(err);
-});
-
-producer.on('delivery-report', function (err, report) {
-  console.log('delivery-report: ' + JSON.stringify(report));
-  counter++;
-});
-
-//Wait for the ready event before producing
-producer.on('ready', function (arg) {
-  producer.produce(topicName, 0, Buffer.from('testing'), null, Date.now(), "", null);
-  console.log('Message sent!');
-});
-
-producer.on('disconnected', function (arg) {
-  console.log('Disconnected!');
-});
-
-producer.connect();
+run();
