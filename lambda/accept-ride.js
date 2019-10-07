@@ -16,7 +16,7 @@ async function handler(event, context, callback) {
         rejectUnauthorized: true
       },
       sasl: {
-        mechanism: 'plain',
+        mechanism: 'SCRAM-SHA-256',
         username: process.env.KAFKA_USERNAME,
         password: process.env.KAFKA_PASSWORD,
       },
@@ -27,7 +27,7 @@ async function handler(event, context, callback) {
     const rideId = Number(callbackId[callbackId.length - 1]);
     await producer.connect();
     await producer.send({
-      topic: 'ride__accepted',
+      topic: 'qw7yecbj-ride__accepted',
       messages: [{
         value: JSON.stringify({
           rideId,
@@ -37,20 +37,11 @@ async function handler(event, context, callback) {
     });
     callback(null, {
       statusCode: 200,
-      body: {
-        replace_original: true,
-        text: `Awesome! You'll get a message soon to let you know if you have been selected.`,
-      }
+      body: 'OK',
     });
   } catch (e) {
     console.error(e);
-    callback(null, {
-      statusCode: 200,
-      body: {
-        replace_original: true,
-        text: 'Oops, looks like there was an error and we could not accept it.',
-      }
-    });
+    callback(e);
   }
 }
 
