@@ -4,25 +4,12 @@ info:
   version: '1.0.0'
 
 servers:
-  dev:
-    url: tcp://localhost:9092
-    protocol: kafka
-  production:
-    url: tcp://velomobile-01.srvs.cloudkafka.com:9094
-    protocol: kafka
+  $ref: '../definitions.yaml#/servers'
 
 channels:
   ride/requested:
     publish:
-      operationId: rideRequested
-      summary: Ride requested
-      description: The user requested a ride.
-      message:
-        $ref: '../control/asyncapi.yaml#/components/messages/rideRequested'
+      $ref: '../definitions.yaml#/operations/rideRequested'
   ride/assigned:
     publish:
-      operationId: rideAssigned
-      summary: Ride assigned
-      description: The driver has been assigned a ride.
-      message:
-        $ref: '../control/asyncapi.yaml#/components/messages/rideAssigned'
+      $ref: '../definitions.yaml#/operations/rideAssigned'
