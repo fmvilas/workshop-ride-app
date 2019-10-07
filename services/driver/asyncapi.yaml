@@ -3,94 +3,33 @@ info:
   title: Driver API
   version: '1.0.0'
 
+servers:
+  dev:
+    url: tcp://localhost:9092
+    protocol: kafka
+  production:
+    url: tcp://pkc-e0x5p.us-east1.gcp.confluent.cloud:9092
+    protocol: kafka
+
 channels:
   ride/requested:
     publish:
+      operationId: rideRequested
       summary: Ride requested
       description: The user requested a ride.
       message:
-        $ref: '#/components/messages/rideRequested'
+        $ref: '../control/asyncapi.yaml#/components/messages/rideRequested'
+  ride/assigned:
+    publish:
+      operationId: rideAssigned
+      summary: Ride assigned
+      description: The driver has been assigned a ride.
+      message:
+        $ref: '../control/asyncapi.yaml#/components/messages/rideAssigned'
   ride/changed:
     subscribe:
-      summary: Ride status changed
+      operationId: rideChanged
+      summary: Ride changed
+      description: The driver changed the status of a ride.
       message:
-        $ref: '#/components/messages/rideStatus'
- 
-components:
-  messages:
-    rideRequested:
-      payload:
-        type: object
-        properties:
-          userId:
-            $ref: '#/components/schemas/userId'
-          ride:
-            $ref: '#/components/schemas/ride'
-          sentAt:
-            $ref: '#/components/schemas/sentAt'
-    rideStatus:
-      payload:
-        type: object
-        properties:
-          userId:
-            $ref: '#/components/schemas/userId'
-          driverId:
-            $ref: '#/components/schemas/driverId'
-          ride:
-            $ref: '#/components/schemas/ride'
-          sentAt:
-            $ref: '#/components/schemas/sentAt'
-  schemas:
-    sentAt:
-      type: string
-      format: date-time
-      description: Date and time when the message was sent.
-    userId:
-      type: integer
-      description: Id of the user.
-    driverId:
-      type: integer
-      description: Id of the driver.
-    ride:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Id of the ride.
-        from:
-          $ref: '#/components/schemas/rideLocation'
-          description: Position where the ride starts from.
-        to:
-          $ref: '#/components/schemas/rideLocation'
-          description: Position where the ride finishes.
-        price:
-          type: number
-          minimum: 0
-          description: Price of the ride in Euros.
-        status:
-          type: string
-          description: Status of the ride.
-          enum:
-            - requested
-            - accepted
-            - picked-up
-            - started
-            - finished
-            - paid
-    rideLocation:
-      type: object
-      properties:
-        latitude:
-          type: number
-          minimum: -90
-          maximum: 90
-          description: Latitude of the starting point.
-        longitude:
-          type: number
-          minimum: -180
-          maximum: 180
-          description: Longitude of the starting point.
-        friendlyName:
-          type: string
-          description: Human-friendly name of the location.
-          
+        $ref: '../control/asyncapi.yaml#/components/messages/rideChanged'

@@ -1,0 +1,31 @@
+default:
+  app:
+    name: Driver API
+    version: 1.0.0
+
+  broker:
+    kafka:
+      clientId: driverApi
+      brokers:
+        - pkc-e0x5p.us-east1.gcp.confluent.cloud:9092
+      consumerOptions:
+        groupId: 'replace-me'
+      topics:
+        - ride__requested
+      topicSeparator: '__'
+
+development:
+
+test:
+
+staging:
+
+production:
+  broker:
+    kafka:
+      ssl:
+        rejectUnauthorized: true
+      sasl:
+        mechanism: 'plain'
+        username:
+        password:
