@@ -4,7 +4,7 @@ const qs = require('qs');
 
 dotenv.config();
 
-async function handler(event, context, callback) {
+async function handler(event, context) {
   try {
     event.body = qs.parse(event.body);
     // { token: 'xxxxxxxxxxxxxxxxxxx',
@@ -21,17 +21,17 @@ async function handler(event, context, callback) {
 
     const { command, text, user_name, user_id } = event.body;
     if (command !== '/ride') {
-      return callback(null, {
+      return {
         statusCode: 400,
         body: 'Sorry, I only understand /ride command.',
-      });
+      };
     }
 
     if (!text.match(/^me as (driver|user)$/)) {
-      return callback(null, {
+      return {
         statusCode: 200,
         body: ':face_palm: I could not understand what you said. Usage is `/ride me as [user|driver]`. E.g., `/ride me as driver`.',
-      });
+      };
     }
 
     const type = text.split(' ')[2];
@@ -65,17 +65,18 @@ async function handler(event, context, callback) {
       }],
     });
     console.error('CHECK 2');
+    producer.disconnect();
 
-    callback(null, {
+    return {
       statusCode: 200,
-      body: `Welcome to Ride! You've been added as a ${type}.`,
-    });
+      body: `:wave: Welcome to Ride, ${user_name}! You've been added as a ${type}.`,
+    };
   } catch (e) {
     console.error(e);
-    callback(null, {
+    return {
       statusCode: 500,
       body: 'Something went wrong on the add-slack-user function. Check out logs for more information.',
-    });
+    };
   }
 }
 
