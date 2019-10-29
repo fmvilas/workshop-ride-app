@@ -1,0 +1,21 @@
+asyncapi: 2.0.0
+info:
+  title: <Your application name>
+  version: <Your application version>
+
+servers:
+  <name of the server>:
+    url: <URL of the server/broker>
+    protocol: <name of the protocol>
+
+channels:
+  <name of the channel/topic>:
+    <subscribe|publish>:
+      description: <human-readable description of the operation>
+      message:
+        payload:
+          <JSON Schema definition of the payload>
+  <name of another channel/topic>:
+    ...
+
+
