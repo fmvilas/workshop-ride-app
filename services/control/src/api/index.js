@@ -8,6 +8,7 @@ const logger = require('./middlewares/logger');
 const errorLogger = require('./middlewares/error-logger');
 const config = require('../lib/config');
 const KafkaAdapter = require('hermesjs-kafka');
+const participantAdded = require('./routes/participant-added.js');
 const rideRequested = require('./routes/ride-requested.js');
 const rideAccepted = require('./routes/ride-accepted.js');
 const rideAssigned = require('./routes/ride-assigned.js');
@@ -19,6 +20,7 @@ app.use(string2json);
 app.use(logger);
 
 // Channels
+app.use(participantAdded);
 app.use(rideRequested);
 app.use(rideAccepted);
 app.useOutbound(rideAssigned);

@@ -7,6 +7,26 @@ servers:
   $ref: '../definitions.yaml#/servers'
 
 channels:
+  participant/added:
+    publish:
+      operationId: onParticipantAdded
+      message:
+        payload:
+          type: object
+          required:
+            - participant
+          properties:
+            participant:
+              type: object
+              required:
+                - id
+                - fullName
+              properties:
+                id:
+                  type: string
+                  description: Id of the participant.
+                fullName:
+                  type: string
   ride/requested:
     publish:
       $ref: '../definitions.yaml#/operations/rideRequested'
