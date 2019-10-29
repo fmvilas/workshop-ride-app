@@ -21,12 +21,18 @@ channels:
               required:
                 - id
                 - fullName
+                - type
               properties:
                 id:
                   type: string
                   description: Id of the participant.
                 fullName:
                   type: string
+                type:
+                  type: string
+                  enum:
+                    - driver
+                    - user
   ride/requested:
     publish:
       $ref: '../definitions.yaml#/operations/rideRequested'
