@@ -49,8 +49,10 @@ async function handler(event, context, callback) {
       },
     });
 
-    const producer = client.producer();  
+    const producer = client.producer();
+    console.error('CHECK 0');
     await producer.connect();
+    console.error('CHECK 1');
     await producer.send({
       topic: 'qw7yecbj-participant__added',
       messages: [{
@@ -62,6 +64,7 @@ async function handler(event, context, callback) {
         })
       }],
     });
+    console.error('CHECK 2');
 
     return callback(null, {
       statusCode: 200,
