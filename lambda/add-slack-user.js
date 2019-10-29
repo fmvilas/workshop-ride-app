@@ -5,10 +5,9 @@ const qs = require('qs');
 dotenv.config();
 
 async function handler(event, context, callback) {
-  console.error(require('util').inspect(event, { depth: null }));
   try {
     event.body = qs.parse(event.body);
-    event.body.payload = JSON.parse(event.body.payload);
+    console.error(require('util').inspect(event.body, { depth: null }));
     
     const client = new Kafka({
       brokers: [process.env.KAFKA_HOST],
