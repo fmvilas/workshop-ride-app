@@ -1,4 +1,3 @@
-const axios = require('axios');
 const dotenv = require('dotenv');
 const { Kafka } = require('kafkajs');
 const qs = require('qs');
@@ -23,37 +22,24 @@ async function handler(event, context, callback) {
     const { command, text, user_name, user_id, response_url } = event.body;
     if (command !== '/ride') {
       return callback(null, {
-        statusCode: 200,
-        body: 'OK',
+        statusCode: 400,
+        body: 'Sorry, I only understand /ride command.',
       });
     }
 
     if (!text.match(/^me as (driver|user)$/)) {
-      try {
-        await axios.post(response_url, {
-          text: 'I could not understand what you said. Usage is `/ride me as [user/driver]`.',
-          response_type: 'ephemeral',
-        });
-      } catch (e) {
-        return callback(e);
-      }
-
       return callback(null, {
         statusCode: 200,
-        body: 'OK',
+        body: 'I could not understand what you said. Usage is `/ride me as [user|driver]`.',
       });
     }
 
     const type = text.split(' ')[2];
 
-    try {
-      await axios.post(response_url, {
-        text: `Welcome to Ride! You've been added as a ${type}.`,
-        response_type: 'ephemeral',
-      });
-    } catch (e) {
-      return callback(e);
-    }
+    return callback(null, {
+      statusCode: 200,
+      body: `Welcome to Ride! You've been added as a ${type}.`,
+    });
     
     const client = new Kafka({
       brokers: [process.env.KAFKA_HOST],
