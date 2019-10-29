@@ -19,7 +19,7 @@ async function handler(event, context, callback) {
     // response_url: 'https://hooks.slack.com/commands/T34F2JRQU/801549252499/xxxxxxxxxxxx',
     // trigger_id: '812555514372.106512637844.19b1b3760ca9e2e3938177b348049433' }
 
-    const { command, text, user_name, user_id, response_url } = event.body;
+    const { command, text, user_name, user_id } = event.body;
     if (command !== '/ride') {
       return callback(null, {
         statusCode: 400,
@@ -30,16 +30,11 @@ async function handler(event, context, callback) {
     if (!text.match(/^me as (driver|user)$/)) {
       return callback(null, {
         statusCode: 200,
-        body: 'I could not understand what you said. Usage is `/ride me as [user|driver]`.',
+        body: ':face_palm: I could not understand what you said. Usage is `/ride me as [user|driver]`. E.g., `/ride me as driver`.',
       });
     }
 
     const type = text.split(' ')[2];
-
-    return callback(null, {
-      statusCode: 200,
-      body: `Welcome to Ride! You've been added as a ${type}.`,
-    });
     
     const client = new Kafka({
       brokers: [process.env.KAFKA_HOST],
@@ -55,21 +50,22 @@ async function handler(event, context, callback) {
     });
 
     const producer = client.producer();  
-    const rideId = Number(callbackId[callbackId.length - 1]);
     await producer.connect();
     await producer.send({
-      topic: 'qw7yecbj-user__added',
+      topic: 'qw7yecbj-participant__added',
       messages: [{
         value: JSON.stringify({
-          rideId,
-          driverId: event.body.payload.user.id,
+          participant: {
+            id: user_id,
+            fullName: user_name,
+          },
         })
       }],
     });
 
-    callback(null, {
+    return callback(null, {
       statusCode: 200,
-      body: 'OK',
+      body: `:wave: Welcome to Ride, ${user_name}! You've been added as a ${type}.`,
     });
   } catch (e) {
     console.error(e);
