@@ -66,7 +66,7 @@ async function handler(event, context, callback) {
     });
     console.error('CHECK 2');
 
-    return callback(null, {
+    callback(null, {
       statusCode: 200,
       body: `:wave: Welcome to Ride, ${user_name}! You've been added as a ${type}.`,
     });
