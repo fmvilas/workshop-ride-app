@@ -1,3 +1,4 @@
+const axios = require('axios');
 const dotenv = require('dotenv');
 const { Kafka } = require('kafkajs');
 const qs = require('qs');
