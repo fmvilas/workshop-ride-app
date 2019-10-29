@@ -58,6 +58,7 @@ async function handler(event, context) {
           participant: {
             id: user_id,
             fullName: user_name,
+            type,
           },
         })
       }],
