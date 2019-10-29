@@ -69,7 +69,10 @@ async function handler(event, context, callback) {
     });
   } catch (e) {
     console.error(e);
-    callback(e);
+    callback(null, {
+      statusCode: 500,
+      body: 'Something went wrong on the add-slack-user function. Check out logs for more information.',
+    });
   }
 }
 
