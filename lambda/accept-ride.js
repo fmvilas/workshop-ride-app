@@ -4,7 +4,7 @@ const qs = require('qs');
 
 dotenv.config();
 
-async function handler(event, context, callback) {
+async function handler(event, context) {
   try {
     event.body = qs.parse(event.body);
     event.body.payload = JSON.parse(event.body.payload);
@@ -35,13 +35,16 @@ async function handler(event, context, callback) {
         })
       }],
     });
-    callback(null, {
+    return {
       statusCode: 200,
       body: 'OK',
-    });
+    };
   } catch (e) {
     console.error(e);
-    callback(e);
+    return {
+      statusCode: 500,
+      body: e.message,
+    };
   }
 }
 
