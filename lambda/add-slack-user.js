@@ -68,7 +68,7 @@ async function handler(event, context, callback) {
 
     callback(null, {
       statusCode: 200,
-      body: `:wave: Welcome to Ride, ${user_name}! You've been added as a ${type}.`,
+      body: `Welcome to Ride! You've been added as a ${type}.`,
     });
   } catch (e) {
     console.error(e);
