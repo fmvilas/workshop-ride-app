@@ -50,9 +50,7 @@ async function handler(event, context) {
     });
 
     const producer = client.producer();
-    console.error('CHECK 0');
     await producer.connect();
-    console.error('CHECK 1');
     await producer.send({
       topic: 'qw7yecbj-participant__added',
       messages: [{
@@ -64,7 +62,6 @@ async function handler(event, context) {
         })
       }],
     });
-    console.error('CHECK 2');
     producer.disconnect();
 
     return {
