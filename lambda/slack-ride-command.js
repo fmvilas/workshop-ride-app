@@ -15,7 +15,7 @@ async function handler(event, context) {
     // user_id: 'U34F2JRRS',
     // user_name: 'fmvilas',
     // command: '/ride',
-    // text: 'me as driver',
+    // text: 'me',
     // response_url: 'https://hooks.slack.com/commands/T34F2JRQU/801549252499/xxxxxxxxxxxx',
     // trigger_id: '812555514372.106512637844.19b1b3760ca9e2e3938177b348049433' }
 
@@ -95,9 +95,16 @@ async function handler(event, context) {
     }
     producer.disconnect();
 
+    if (type === 'driver') {
+      return {
+        statusCode: 200,
+        body: `:wave: Welcome to Ride, ${user_name}! You've been added as a driver.`,
+      };
+    }
+
     return {
       statusCode: 200,
-      body: `:wave: Welcome to Ride, ${user_name}! You've been added as a ${type}.`,
+      body: `:wave: Hey, ${user_name}! We just requested a driver for you. Wait while a driver responds.`,
     };
   } catch (e) {
     console.error(e);
