@@ -27,7 +27,7 @@ async function handler(event, context) {
     const rideId = Number(callbackId[callbackId.length - 1]);
     await producer.connect();
     await producer.send({
-      topic: 'qw7yecbj-ride__accepted',
+      topic: 'qw7yecbj-ride-accepted',
       messages: [{
         value: JSON.stringify({
           rideId,

@@ -52,7 +52,7 @@ async function handler(event, context) {
     const producer = client.producer();
     await producer.connect();
     await producer.send({
-      topic: 'qw7yecbj-participant__added',
+      topic: 'qw7yecbj-participant-added',
       messages: [{
         value: JSON.stringify({
           participant: {
