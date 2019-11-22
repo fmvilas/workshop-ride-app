@@ -27,14 +27,18 @@ async function handler(event, context) {
       };
     }
 
-    if (!text.match(/^me$/) && !text.match(/^drive$/)) {
+    let type;
+
+    if (!text.match(/^me$/)) {
+      type = 'user';
+    } else if (!text.match(/^drive$/)) {
+      type = 'driver';
+    } else {
       return {
         statusCode: 200,
         body: ':face_palm: I could not understand what you said. Usage is `/ride me|drive`. E.g., `/ride me` requests a ride for you and `/ride drive` registers you as a driver.',
       };
     }
-
-    const type = text.split(' ')[2];
     
     const client = new Kafka({
       brokers: [process.env.KAFKA_HOST],
@@ -51,18 +55,44 @@ async function handler(event, context) {
 
     const producer = client.producer();
     await producer.connect();
-    await producer.send({
-      topic: 'qw7yecbj-participant-added',
-      messages: [{
-        value: JSON.stringify({
-          participant: {
-            id: user_id,
-            fullName: user_name,
-            type,
-          },
-        })
-      }],
-    });
+    if (type === 'driver') {
+      await producer.send({
+        topic: 'qw7yecbj-driver-registered',
+        messages: [{
+          value: JSON.stringify({
+            participant: {
+              id: user_id,
+              fullName: user_name,
+            },
+          })
+        }],
+      });
+    } else if (type === 'user') {
+      await producer.send({
+        topic: 'qw7yecbj-ride-requested',
+        messages: [{
+          value: JSON.stringify({
+            user: {
+              id: user_id,
+              fullName: user_name,
+            },
+            ride: {
+              id: Date.now(),
+              from: {
+                latitude: 2,
+                longitude: 1,
+              },
+              to: {
+                latitude: 3,
+                longitude: 1,
+              },
+              price: 30,
+            },
+            sentAt: new Date().toISOString(),
+          })
+        }],
+      });
+    }
     producer.disconnect();
 
     return {
