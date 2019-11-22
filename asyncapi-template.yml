@@ -12,6 +12,7 @@ channels:
   <name of the channel/topic>:
     <subscribe|publish>:
       description: <human-readable description of the operation>
+      operationId: <name of the function in your code that will handle the operation>
       message:
         payload:
           <JSON Schema definition of the payload>
