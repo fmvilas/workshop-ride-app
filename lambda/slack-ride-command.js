@@ -29,9 +29,9 @@ async function handler(event, context) {
 
     let type;
 
-    if (!text.match(/^me$/)) {
+    if (text.match(/^me$/)) {
       type = 'user';
-    } else if (!text.match(/^drive$/)) {
+    } else if (text.match(/^drive$/)) {
       type = 'driver';
     } else {
       return {
