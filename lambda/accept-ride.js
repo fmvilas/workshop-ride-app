@@ -37,7 +37,7 @@ async function handler(event, context) {
     });
     return {
       statusCode: 200,
-      body: 'OK',
+      body: `:tada: Awesome! I'm going to try get this ride for you. Hold on...`,
     };
   } catch (e) {
     console.error(e);
