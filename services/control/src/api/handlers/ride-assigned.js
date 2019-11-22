@@ -1,4 +1,5 @@
 const postSlack = require('../../lib/post-slack');
+const db = require('../../lib/db');
 const handler = module.exports = {};
 
 /**
@@ -25,8 +26,36 @@ const handler = module.exports = {};
  * @param {string} options.message.payload.sentAt - Date and time when the message was sent.
  */
 handler.rideAssigned = async ({message}) => {
+  const drivers = db.list('drivers');
+
+  Promise.all(Object.keys(drivers).map(driverId => {
+    if (driverId === message.payload.driver.id) {
+      return postSlack({
+        text: ':first_place_medal: Congratulations! The this ride has been assigned to you.',
+        channel: driverId,
+      });
+    }
+
+    return postSlack({
+      text: ':disappointed: Oooh! This ride has been assigned to another driver. You gotta be faster next time! :zap:',
+      channel: driverId,
+    });
+  }));
+
   postSlack({
-    text: `Ride #${message.payload.ride.id} (requested by ${message.payload.user.fullName}) has been assigned to driver ${message.payload.driver.fullName}.`,
-    channel: 'workshop',
+    channel: 'workshop-lille',
+    text: `:car::dash: <@${message.payload.driver.id}> is going to pick up <@${message.payload.user.id}> :raised_hands:`,
+    attachments: [
+      {
+        title: 'Ride identifier',
+        text: message.payload.ride.id,
+        color: '#008800',
+      },
+      {
+        title: 'Price',
+        text: `${message.payload.ride.price} €`,
+        color: '#00aaee',
+      }
+    ]
   });
 };

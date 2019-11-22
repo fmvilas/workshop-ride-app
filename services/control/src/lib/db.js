@@ -1,19 +1,15 @@
 const collections = {
   users: {
-    U34F2JRRS: {
-      id: 'U34F2JRRS',
-      fullName: 'Fran Mendez',
-    },
+    // U34F2JRRS: {
+    //   id: 'U34F2JRRS',
+    //   fullName: 'Fran Mendez',
+    // },
   },
   drivers: {
-    U34F2JRRS: {
-      id: 'U34F2JRRS',
-      fullName: 'Mrs Driver',
-    },
-    UJZKW7RFH: {
-      id: 'UJZKW7RFH',
-      fullName: 'Waleed Ashraf',
-    }
+    // U34F2JRRS: {
+    //   id: 'U34F2JRRS',
+    //   fullName: 'Mrs Driver',
+    // },
   },
   rides: {},
   pendingRides: {},

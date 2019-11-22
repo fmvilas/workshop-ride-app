@@ -4,20 +4,22 @@ const handler = module.exports = {};
 
 handler.rideRequested = async ({message}) => {
   const drivers = db.list('drivers');
-  const user = db.get('users', message.payload.user.id);
+  const user = message.payload.user;
+
+  if (!Object.keys(drivers).length) {
+    return await postSlack({
+      text: `Hi, ${user.fullName}! Unfortunately, there are no drivers right now. Try again later.`,
+      channel: user.id,
+    });
+  }
 
   db.add('pendingRides', message.payload.ride.id, {
     user,
     ride: message.payload.ride,
   });
 
-  await postSlack({
-    text: `${user.fullName} has requested a ride. Polling drivers...`,
-    channel: 'workshop',
-  });
-
   await Promise.all(Object.keys(drivers).map(driverId => postSlack({
-    text: `${user.fullName} has requested a ride.`,
+    text: `:take_my_money: <@${user.id}> has requested a ride for *${message.payload.ride.price} €*!`,
     channel: driverId,
     attachments: [{
       text: 'Do you want to take it?',
@@ -36,4 +38,9 @@ handler.rideRequested = async ({message}) => {
       ]
     }]
   })));
+
+  await postSlack({
+    text: `:iphone: <@${user.id}> has requested a ride. Polling drivers...`,
+    channel: 'workshop-lille',
+  });
 };

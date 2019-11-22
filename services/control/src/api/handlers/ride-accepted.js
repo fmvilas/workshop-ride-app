@@ -34,6 +34,6 @@ handler.rideAccepted = async ({message}) => {
       driver: db.get('drivers', message.payload.driverId),
     });
 
-    message.hermes.send(db.get('rides', rideId), null, 'ride/assigned');
+    message.hermes.send(db.get('rides', rideId), null, 'ride-assigned');
   }
 };

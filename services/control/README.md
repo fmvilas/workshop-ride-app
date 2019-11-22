@@ -1,3 +1,3 @@
-# Control Panel API
+# Ride App Control Panel API
 
 

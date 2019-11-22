@@ -6,7 +6,7 @@ module.exports = router;
 /**
  * Ride accepted
  */
-router.use('ride/accepted', async (message, next) => {
+router.use('ride-accepted', async (message, next) => {
   try {
     await rideAcceptedHandler.rideAccepted({message});
     next();

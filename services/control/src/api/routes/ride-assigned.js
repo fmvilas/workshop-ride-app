@@ -6,7 +6,7 @@ module.exports = router;
 /**
  * Ride assigned
  */
-router.useOutbound('ride/assigned', async (message, next) => {
+router.useOutbound('ride-assigned', async (message, next) => {
   try {
     await rideAssignedHandler.rideAssigned({message});
     next();

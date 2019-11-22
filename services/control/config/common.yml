@@ -1,19 +1,19 @@
 default:
   app:
-    name: Control Panel API
+    name: Ride App Control Panel API
     version: 1.0.0
 
   broker:
     kafka:
-      clientId: controlPanelApi
+      clientId: rideAppControlPanelApi
       brokers:
         - velomobile-01.srvs.cloudkafka.com:9094
       consumerOptions:
-        groupId: 'replace-me'
+        groupId: rideAppControlPanelApi
       topics:
-        - participant__added
-        - ride__requested
-        - ride__accepted
+        - driver-registered
+        - ride-requested
+        - ride-accepted
       topicSeparator: '__'
       topicPrefix:
 
