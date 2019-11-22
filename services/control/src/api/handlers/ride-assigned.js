@@ -31,8 +31,20 @@ handler.rideAssigned = async ({message}) => {
   Promise.all(Object.keys(drivers).map(driverId => {
     if (driverId === message.payload.driver.id) {
       return postSlack({
-        text: ':first_place_medal: Congratulations! The this ride has been assigned to you.',
+        text: ':first_place_medal: Congratulations! The ride has been assigned to you.',
         channel: driverId,
+        attachments: [
+          {
+            title: 'Ride identifier',
+            text: message.payload.ride.id,
+            color: '#008800',
+          },
+          {
+            title: 'Price',
+            text: `${message.payload.ride.price} €`,
+            color: '#00aaee',
+          }
+        ],
       });
     }
 
