@@ -27,10 +27,10 @@ async function handler(event, context) {
       };
     }
 
-    if (!text.match(/^me as (driver|user)$/)) {
+    if (!text.match(/^me$/) && !text.match(/^drive$/)) {
       return {
         statusCode: 200,
-        body: ':face_palm: I could not understand what you said. Usage is `/ride me as [user|driver]`. E.g., `/ride me as driver`.',
+        body: ':face_palm: I could not understand what you said. Usage is `/ride me|drive`. E.g., `/ride me` requests a ride for you and `/ride drive` registers you as a driver.',
       };
     }
 
