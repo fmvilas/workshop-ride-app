@@ -33,6 +33,11 @@ async function handler(event, context) {
       type = 'user';
     } else if (text.match(/^drive$/)) {
       type = 'driver';
+    } else if (text.match(/^help$/)) {
+      return {
+        statusCode: 200,
+        body: 'You can use the following commands:\n\n/ride drive :arrow_right: Will add you as a driver.\n/ride me :arrow_right: Will request a ride for you.',
+      };
     } else {
       return {
         statusCode: 200,
