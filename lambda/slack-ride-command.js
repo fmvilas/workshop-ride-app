@@ -98,7 +98,7 @@ async function handler(event, context) {
     if (type === 'driver') {
       return {
         statusCode: 200,
-        body: `:wave: Welcome to Ride, ${user_name}! You've been added as a driver.`,
+        body: `:wave: Hey, ${user_name}! Adding you as a driver...`,
       };
     }
 
@@ -110,7 +110,7 @@ async function handler(event, context) {
     console.error(e);
     return {
       statusCode: 500,
-      body: 'Something went wrong on the add-slack-user function. Check out logs for more information.',
+      body: 'Something went wrong on the slack-ride-command function. Check out logs for more information.',
     };
   }
 }
