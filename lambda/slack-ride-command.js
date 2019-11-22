@@ -60,7 +60,7 @@ async function handler(event, context) {
         topic: 'qw7yecbj-driver-registered',
         messages: [{
           value: JSON.stringify({
-            participant: {
+            driver: {
               id: user_id,
               fullName: user_name,
             },
