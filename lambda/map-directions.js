@@ -9,7 +9,7 @@ async function handler(event, context, callback) {
     const gmapsDirectionsApiUrl = `https://maps.googleapis.com/maps/api/directions/json?origin=${encodeURIComponent(qs.from)}&destination=${encodeURIComponent(qs.to)}&mode=driving&key=${process.env.GMAPS_KEY}`;
     const gmapsStaticApiUrl = `https://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=roadmap&key=${process.env.GMAPS_KEY}&path=`;
 
-    axios({
+    await axios({
       url: gmapsDirectionsApiUrl,
       method: 'GET',
       headers: {
