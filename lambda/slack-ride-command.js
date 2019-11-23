@@ -28,8 +28,8 @@ async function handler(event, context) {
     }
 
     let type;
-    let from = 'Sitges';
-    let to = 'Barcelona';
+    let from = '2 Rue Hegel, 59160 Lille, France';
+    let to = 'Place Gilleson, 59800 Lille, France';
     let price = Math.round(Math.random()*100);
 
     if (text.match(/^me( from (.+) to (.+))?$/)) {
