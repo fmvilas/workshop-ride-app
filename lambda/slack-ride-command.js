@@ -86,10 +86,12 @@ async function handler(event, context) {
               from: {
                 latitude: 2,
                 longitude: 1,
+                friendlyName: 'Sitges',
               },
               to: {
                 latitude: 3,
                 longitude: 1,
+                friendlyName: 'Barcelona',
               },
               price: 30,
             },
