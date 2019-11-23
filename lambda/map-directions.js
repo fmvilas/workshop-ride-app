@@ -23,7 +23,7 @@ async function handler(event, context, callback) {
           },
           statusCode: response.status,
           body: JSON.stringify({
-            url: `${gmapsStaticApiUrl}${response.data.routes[0].overview_polyline.points}`
+            url: `${gmapsStaticApiUrl}${encodeURIComponent(response.data.routes[0].overview_polyline.points)}`
           })
         });
       }).catch((error) => {
