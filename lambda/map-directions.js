@@ -9,7 +9,7 @@ async function handler(event, context, callback) {
     const gmapsDirectionsApiUrl = `https://maps.googleapis.com/maps/api/directions/json?origin=${encodeURIComponent(qs.from)}&destination=${encodeURIComponent(qs.to)}&mode=driving&key=${process.env.GMAPS_KEY}`;
     const gmapsStaticApiUrl = `https://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=roadmap&key=${process.env.GMAPS_KEY}&path=`;
 
-    await axios({
+    axios({
       url: gmapsDirectionsApiUrl,
       method: 'GET',
       headers: {
@@ -22,9 +22,9 @@ async function handler(event, context, callback) {
             'Content-Type': 'application/json',
           },
           statusCode: response.status,
-          body: {
-            url: `${gmapsStaticApiUrl}${response.data.routes[0].overview_polyline.points}`
-          }
+          body: JSON.stringify(response.data),
+            // url: `${gmapsStaticApiUrl}${response.data.routes[0].overview_polyline.points}`
+          // }
         });
       }).catch((error) => {
         console.error(error);
