@@ -17,6 +17,7 @@ async function handler(event, context, callback) {
       },
     })
       .then((response) => {
+        console.error(JSON.stringify(response.data));
         callback(null, {
           headers: {
             'Content-Type': 'application/json',
