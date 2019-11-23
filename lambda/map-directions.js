@@ -12,11 +12,14 @@ async function handler(event, context, callback) {
       url: gmapsDirectionsApiUrl,
       method: 'GET',
       headers: {
-        'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
     })
       .then((response) => {
         callback(null, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
           statusCode: response.status,
           body: JSON.stringify(response.data)
         });
