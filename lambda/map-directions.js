@@ -22,9 +22,9 @@ async function handler(event, context, callback) {
             'Content-Type': 'application/json',
           },
           statusCode: response.status,
-          body: {
+          body: JSON.stringify({
             url: `${gmapsStaticApiUrl}${response.data.routes[0].overview_polyline.points}`
-          }
+          })
         });
       }).catch((error) => {
         console.error(error);
