@@ -35,8 +35,8 @@ async function handler(event, context) {
     if (text.match(/^me( from (.+) to (.+))?$/)) {
       const parts = text.match(/^me( from (.+) to (.+))?$/);
       type = 'user';
-      from = parts[2];
-      to = parts[3];
+      from = parts[2] || from;
+      to = parts[3] || to;
     } else if (text.match(/^drive$/)) {
       type = 'driver';
     } else if (text.match(/^help$/)) {
