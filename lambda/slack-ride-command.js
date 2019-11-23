@@ -28,9 +28,15 @@ async function handler(event, context) {
     }
 
     let type;
+    let from = 'Sitges';
+    let to = 'Barcelona';
+    let price = 30;
 
-    if (text.match(/^me$/)) {
+    if (text.match(/^me( from ([\d\w\s]+) to ([\d\w\s]+))?$/)) {
+      const parts = text.match(/^me( from ([\d\w\s]+) to ([\d\w\s]+))?$/);
       type = 'user';
+      from = parts[2];
+      to = parts[3];
     } else if (text.match(/^drive$/)) {
       type = 'driver';
     } else if (text.match(/^help$/)) {
@@ -86,14 +92,14 @@ async function handler(event, context) {
               from: {
                 latitude: 2,
                 longitude: 1,
-                friendlyName: 'Sitges',
+                friendlyName: from,
               },
               to: {
                 latitude: 3,
                 longitude: 1,
-                friendlyName: 'Barcelona',
+                friendlyName: to,
               },
-              price: 30,
+              price,
             },
             sentAt: new Date().toISOString(),
           })
