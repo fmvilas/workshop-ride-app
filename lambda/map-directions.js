@@ -27,7 +27,7 @@ async function handler(event, context, callback) {
           }
         });
       }).catch((error) => {
-        console.log(error);
+        console.error(error);
         callback(error);
       });
   } catch (e) {
