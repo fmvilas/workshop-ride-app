@@ -30,7 +30,7 @@ async function handler(event, context) {
     let type;
     let from = 'Sitges';
     let to = 'Barcelona';
-    let price = 30;
+    let price = Math.round(Math.random()*100);
 
     if (text.match(/^me( from ([\d\w\s]+) to ([\d\w\s]+))?$/)) {
       const parts = text.match(/^me( from ([\d\w\s]+) to ([\d\w\s]+))?$/);
