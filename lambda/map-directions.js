@@ -67,7 +67,7 @@ async function handler(event, context, callback) {
   try {
     const qs = event.queryStringParameters;
     const gmapsDirectionsApiUrl = `https://maps.googleapis.com/maps/api/directions/json?origin=${encodeURIComponent(qs.from)}&destination=${encodeURIComponent(qs.to)}&mode=driving&key=${process.env.GMAPS_KEY}`;
-    const gmapsStaticApiUrl = `https://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=roadmap&key=${process.env.GMAPS_KEY}&path=`;
+    const gmapsStaticApiUrl = `https://maps.googleapis.com/maps/api/staticmap?size=600x300&maptype=roadmap&key=${process.env.GMAPS_KEY}&path=enc%3A`;
 
     await axios({
       url: gmapsDirectionsApiUrl,
@@ -83,7 +83,7 @@ async function handler(event, context, callback) {
           },
           statusCode: response.status,
           body: JSON.stringify({
-            url: sign(`${gmapsStaticApiUrl}${encodeURIComponent(response.data.routes[0].overview_polyline.points)}`, process.env.GMAPS_SIGNING_SECRET)
+            url: `${gmapsStaticApiUrl}${encodeURIComponent(response.data.routes[0].overview_polyline.points)}`
           })
         });
       }).catch((error) => {
