@@ -83,7 +83,7 @@ async function handler(event, context, callback) {
           },
           statusCode: response.status,
           body: JSON.stringify({
-            url: sign(`${gmapsStaticApiUrl}${encodeURIComponent(response.data.routes[0].overview_polyline.points)}`)
+            url: sign(`${gmapsStaticApiUrl}${encodeURIComponent(response.data.routes[0].overview_polyline.points)}`, process.env.GMAPS_SIGNING_SECRET)
           })
         });
       }).catch((error) => {
