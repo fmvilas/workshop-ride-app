@@ -3,7 +3,7 @@ const axios = require('axios');
 
 dotenv.config();
 
-async function handler(event, context) {
+async function handler(event, context, callback) {
   try {
     const qs = event.queryStringParameters;
     const gmapsDirectionsApiUrl = `https://maps.googleapis.com/maps/api/directions/json?origin=Grodno&destination=Minsk&mode=driving&key=${process.env.GMAPS_KEY}`;
