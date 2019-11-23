@@ -11,7 +11,7 @@ const handler = module.exports = {};
  * @param {string} options.message.payload.driver.fullName
  */
 handler.onDriverRegistered = async ({message}) => {
-  db.add('drivers', message.payload.driver.id, message.payload.driver);
+  db.set(`drivers.${message.payload.driver.id}`, message.payload.driver).write();
 
   postSlack({
     text: `:wave: Welcome to Ride, ${message.payload.driver.fullName}. You're registered as a driver now :racing_car:`,

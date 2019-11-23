@@ -26,48 +26,54 @@ const handler = module.exports = {};
  * @param {string} options.message.payload.sentAt - Date and time when the message was sent.
  */
 handler.rideAssigned = async ({message}) => {
-  const drivers = db.list('drivers');
+  const drivers = db.get('drivers').value();
 
-  Promise.all(Object.keys(drivers).map(driverId => {
-    if (driverId === message.payload.driver.id) {
-      return postSlack({
-        text: ':first_place_medal: Congratulations! The ride has been assigned to you.',
-        channel: driverId,
-        attachments: [
-          {
-            title: 'Ride identifier',
-            text: message.payload.ride.id,
-            color: '#008800',
-          },
-          {
-            title: 'Price',
-            text: `${message.payload.ride.price} €`,
-            color: '#00aaee',
-          }
-        ],
-      });
-    }
-
-    return postSlack({
-      text: ':disappointed: Oooh! This ride has been assigned to another driver. You gotta be faster next time! :zap:',
-      channel: driverId,
-    });
-  }));
-
-  postSlack({
-    channel: 'workshop-lille',
-    text: `:car::dash: <@${message.payload.driver.id}> is going to pick up <@${message.payload.user.id}> :raised_hands:`,
-    attachments: [
-      {
-        title: 'Ride identifier',
-        text: message.payload.ride.id,
-        color: '#008800',
-      },
-      {
-        title: 'Price',
-        text: `${message.payload.ride.price} €`,
-        color: '#00aaee',
+  try {
+    const promises = Object.keys(drivers).map(driverId => {
+      if (driverId === message.payload.driver.id) {
+        return postSlack({
+          text: ':first_place_medal: Congratulations! The ride has been assigned to you.',
+          channel: driverId,
+          attachments: [
+            {
+              title: 'Ride identifier',
+              text: message.payload.ride.id,
+              color: '#008800',
+            },
+            {
+              title: 'Price',
+              text: `${message.payload.ride.price} €`,
+              color: '#00aaee',
+            }
+          ],
+        });
       }
-    ]
-  });
+
+      return postSlack({
+        text: ':disappointed: Oooh! This ride has been assigned to another driver. You gotta be faster next time! :zap:',
+        channel: driverId,
+      });
+    });
+
+    await Promise.all(promises);
+
+    postSlack({
+      channel: 'workshop-lille',
+      text: `:car::dash: <@${message.payload.driver.id}> is going to pick up <@${message.payload.user.id}> :raised_hands:`,
+      attachments: [
+        {
+          title: 'Ride identifier',
+          text: message.payload.ride.id,
+          color: '#008800',
+        },
+        {
+          title: 'Price',
+          text: `${message.payload.ride.price} €`,
+          color: '#00aaee',
+        }
+      ]
+    });
+  } catch (e) {
+    console.error(e);
+  }
 };

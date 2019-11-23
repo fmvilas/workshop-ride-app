@@ -26,14 +26,15 @@ const handler = module.exports = {};
  */
 handler.rideAccepted = async ({message}) => {
   const rideId = message.payload.rideId;
+  const ride = db.get(`pendingRides.${rideId}`).value();
 
-  if (db.get('pendingRides', rideId)) {
-    db.add('rides', rideId, db.get('pendingRides', rideId));
-    db.remove('pendingRides', rideId);
-    db.update('rides', rideId, {
-      driver: db.get('drivers', message.payload.driverId),
-    });
+  if (ride) {
+    const driver = db.get(`drivers.${message.payload.driverId}`).value();
+    db.unset(`pendingRides.${rideId}`).write();
 
-    message.hermes.send(db.get('rides', rideId), null, 'ride-assigned');
+    ride.driver = driver;
+
+    db.set(`rides.${rideId}`, ride).write();
+    message.hermes.send(ride, null, 'ride-assigned');
   }
 };

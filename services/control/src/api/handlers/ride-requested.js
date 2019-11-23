@@ -3,7 +3,7 @@ const db = require('../../lib/db');
 const handler = module.exports = {};
 
 handler.rideRequested = async ({message}) => {
-  const drivers = db.list('drivers');
+  const drivers = db.get('drivers').value();
   const user = message.payload.user;
 
   if (!Object.keys(drivers).length) {
@@ -13,10 +13,10 @@ handler.rideRequested = async ({message}) => {
     });
   }
 
-  db.add('pendingRides', message.payload.ride.id, {
+  db.set(`pendingRides.${message.payload.ride.id}`, {
     user,
     ride: message.payload.ride,
-  });
+  }).write();
 
   await Promise.all(Object.keys(drivers).map(driverId => postSlack({
     text: `:take_my_money: <@${user.id}> has requested a ride for *${message.payload.ride.price} €*!`,
