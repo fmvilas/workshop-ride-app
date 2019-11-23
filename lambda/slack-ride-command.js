@@ -32,8 +32,8 @@ async function handler(event, context) {
     let to = 'Barcelona';
     let price = Math.round(Math.random()*100);
 
-    if (text.match(/^me( from ([\d\w\s]+) to ([\d\w\s]+))?$/)) {
-      const parts = text.match(/^me( from ([\d\w\s]+) to ([\d\w\s]+))?$/);
+    if (text.match(/^me( from (.+) to (.+))?$/)) {
+      const parts = text.match(/^me( from (.+) to (.+))?$/);
       type = 'user';
       from = parts[2];
       to = parts[3];
