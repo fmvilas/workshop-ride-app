@@ -42,7 +42,7 @@ async function handler(event, context) {
     } else if (text.match(/^help$/)) {
       return {
         statusCode: 200,
-        body: 'You can use the following commands:\n\n`/ride drive` - Adds you as a driver.\n`/ride me` - Requests a ride for you.',
+        body: 'You can use the following commands:\n\n`/ride drive` - Adds you as a driver.\n`/ride me[ from <origin> to <destination>]` - Requests a ride for you.',
       };
     } else {
       return {
