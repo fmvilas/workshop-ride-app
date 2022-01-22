@@ -12,7 +12,7 @@
     "hermesjs-kafka": "2.x",
     "hermesjs-router": "1.x",
     "lowdb": "^1.0.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "node-yaml-config": "0.0.4"
   }
 }
